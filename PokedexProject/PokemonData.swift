@@ -8,7 +8,16 @@
 
 import Foundation
 
-struct PokemonData: Codable {
-    var id: Int
-    var name: String
+
+struct PokemenHeader: Codable {
+    var count: Int
+    var next: String?
+    var previous: String?
+    var results: [PokemonData]?
 }
+
+struct PokemonData: Codable {
+    var name: String
+    var url: String
+}
+

@@ -15,32 +15,16 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        loadPokemon(pageNumber: 10)
     }
     
-    private func parseFeedData(data: Data) {
-                     
-        // background the loading / parsing elements
-        DispatchQueue.global(qos: .background).async {
-
-            do {
-
-                // create decoder
-                let jsonDecoder = JSONDecoder()
-
-                // decode json into structs
-                let temp = try jsonDecoder.decode([PokemonData].self, from: data)
-
-           
-            } catch {
-                print("Error Parsing JSON: \(error.localizedDescription)")
-            }
-
-            DispatchQueue.main.async {
-                
-                //self.tvPosts.reloadData()
-            }
+    private func loadPokemon(pageNumber: Int) {
+        NetworkController().loadDataFromURL(urlString: K.ServiceURL.getPokemen) { (data) in
+            print (data.description)
         }
     }
+    
+
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
   

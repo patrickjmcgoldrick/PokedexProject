@@ -10,9 +10,9 @@ import Foundation
 
 class NetworkController {
 
-    func searchArtistAlbums(searchTerm: String, completed: @escaping (Data) -> ()) {
+    func loadDataFromURL(urlString: String, completed: @escaping (Data) -> ()) {
 
-        guard let url = URL(string: "X.y.com") else { return }
+        guard let url = URL(string: urlString) else { return }
         
         let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
             

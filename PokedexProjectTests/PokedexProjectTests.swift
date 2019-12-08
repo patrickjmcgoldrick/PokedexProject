@@ -19,16 +19,39 @@ class PokedexProjectTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
+    func testPokemenParser() {
+        // need this to keep testing alive until
+        // the background process finishes
+        let expectation = self.expectation(description: "Testing Pokemon Parser")
+        
+        let testBundle = Bundle(for: type(of: self))
+        let filename = "pokemen"
 
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
+        let path = testBundle.path(forResource: filename, ofType: "json")
+        XCTAssertNotNil(path, "\(filename) file not found")
+
+        guard let cleanPath = path else { return }
+
+        // convert into URL
+        let url = NSURL.fileURL(withPath: cleanPath)
+        do {
+            // load json into Data object
+            let data = try Data(contentsOf: url)
+
+            XCTAssertNotNil(data, "Data came back nil")
+
+            let parser = PokemenParser()
+            parser.parse(data: data) { (pokemenHeader) in
+                
+                print ("Count: \(pokemenHeader.count)")
+                XCTAssertTrue(pokemenHeader.count == K.TestCase.expectedPokemenCount)
+
+                expectation.fulfill()
+            }
+        } catch {
+            assertionFailure("Error: " + error.localizedDescription)
         }
+        // 15 second wait for timeout
+        waitForExpectations(timeout: 15, handler: nil)
     }
-
 }

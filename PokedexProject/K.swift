@@ -12,7 +12,7 @@ struct K {
     
     struct ServiceURL {
 
-        static let getPokemen = "https://pokeapi.co/api/v2/pokemon/"
+        static let getPokemen = "https://pokeapi.co/api/v2/pokemon"
         
         static let getPokemonForm = "https://pokeapi.co/api/v2/pokemon-form/"
     }

@@ -12,33 +12,37 @@ class ListViewController: UIViewController {
 
     @IBOutlet weak var collectionView: UICollectionView!
     
-    var pokemen = [PokemonData]()
+    var pokemen = [Pokemon]()
     var defaultImage = UIImage(named: "defaultPokemon")
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        loadPokemon(pageNumber: 10)
+        loadPokemon(offset: 0)
         
         collectionView.dataSource = self
         collectionView.delegate = self
     }
     
-    private func loadPokemon(pageNumber: Int) {
-        NetworkController().loadPokemonData(urlString: K.ServiceURL.getPokemen) { (data) in
+    private func loadPokemon(offset: Int) {
+       
+        let url = "\(K.ServiceURL.getPokemen)?offset=\(offset)&limit=100"
+        NetworkController().loadPokemonData(urlString: url) { (data) in
             print (data.description)
             
             let parser = PokemenParser()
             parser.parse(data: data) { (pokemenHeader) in
                 
                 if let results = pokemenHeader.results {
-                    self.pokemen = results
-                }
+                    for result in results {
+                        CoreDataSaveOps.shared.savePokemon(pokemon: result)
+                    }
+                    self.pokemen = CoreDataFetchOps.shared.getAllPokemen()
                 
-                DispatchQueue.main.async {
-                    self.collectionView.reloadData()
+                    DispatchQueue.main.async {
+                        self.collectionView.reloadData()
+                    }
                 }
-                
             }
         }
     }
@@ -74,17 +78,23 @@ extension ListViewController: UICollectionViewDataSource {
         } else {
             // otherwise, load image and save for next time
             cell.imageView.image = defaultImage
-            ImageLoader().loadPokemonImage(id: (indexPath.row + 1)) { (data) in
+            ImageLoader().loadPokemonImage(id: (indexPath.row + 1)) { (imageURL, data) in
+                
+                self.updatePokemon()
                 
                 DispatchQueue.main.async {
                     cell.imageView.image = UIImage(data: data)
                 }
-                // TODO: cache image data
-                let updatePokemon = PokemonData(name: pokemon.name, url: pokemon.url, imageData: data)
-                self.pokemen[indexPath.row] = updatePokemon
             }
         }
         return cell
+    }
+    
+    private func updatePokemon() {
+        // TODO: cache image data
+        //let updatePokemon = PokemonData(name: pokemon.name, url: pokemon.detailURL, imageURL: imageURL, imageData: data)
+        //self.pokemen[indexPath.row] = updatePokemon
+
     }
 }
 

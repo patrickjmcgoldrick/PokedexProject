@@ -21,9 +21,14 @@ class CoreDataFetchOps {
         return coreDataManager.fetchObjects(fetchRequest: fetchRequest, context: context)
     }
     
-    func getSportby(email: String) -> [User] {
+    func getUserby(email: String) -> [User] {
         let fetchRequest: NSFetchRequest<User> = User.fetchRequest()
         fetchRequest.predicate = NSPredicate(format: "email=%@", email)
+        return coreDataManager.fetchObjects(fetchRequest: fetchRequest, context: context)
+    }
+    
+    func getAllPokemen() -> [Pokemon] {
+        let fetchRequest: NSFetchRequest<Pokemon> = Pokemon.fetchRequest()
         return coreDataManager.fetchObjects(fetchRequest: fetchRequest, context: context)
     }
 }

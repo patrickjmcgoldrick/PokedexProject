@@ -1,7 +1,7 @@
 # Week 2 Assignment - Pokedex
-• Use the api https://pokeapi.co to build a pokedex.
++ Use the api https://pokeapi.co to build a pokedex.
 • Implement a search function which searches pokemon and the results should be shown in a collection view.
-• Use lazy loading to display images.
++ Use lazy loading to display images.
 • Use scroll view(s) on the search page.
 • Build a detail page which provider more information about the pokemon.
 • Perform local login

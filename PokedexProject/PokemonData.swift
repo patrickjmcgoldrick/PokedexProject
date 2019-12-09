@@ -16,18 +16,20 @@ struct PokemenHeader: Codable {
 }
 
 struct PokemonData: Codable {
+    var id: Int?
     var name: String
     var url: String
+    var imageURL: String?
     var imageData: Data?
 }
 
 struct PokemonFormData: Codable {
     var id: Int?
-    var pokemon: Pokemon?
+    var pokemon: PokemonRow?
     var sprites: Sprites?
 }
 
-struct Pokemon: Codable {
+struct PokemonRow: Codable {
     var name: String?
     var url: String?
 }

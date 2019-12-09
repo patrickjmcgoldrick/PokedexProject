@@ -10,9 +10,11 @@ import Foundation
 
 class ImageLoader {
     
+    var imageURL: String?
+    
     // Given a Pokemon id, load the PokemonForm, then get
     // the 'front_default' image into the given ImageView
-    func loadPokemonImage(id: Int, imageLoaded: @escaping (Data) -> Void) {
+    func loadPokemonImage(id: Int, imageLoaded: @escaping (String, Data) -> Void) {
         
         let url = "\(K.ServiceURL.getPokemonForm)\(id)"
         
@@ -21,11 +23,12 @@ class ImageLoader {
             
             let parser = PokemonFormParser()
             parser.parse(data: data) { (formData) in
-                if let imageUrl = formData.sprites?.front_default {
+                self.imageURL = formData.sprites?.front_default
+                if let imageURL = self.imageURL {
                     
-                    network.loadPokemonData(urlString: imageUrl) { (data) in
+                    network.loadPokemonData(urlString: imageURL) { (data) in
                         
-                        imageLoaded(data)
+                        imageLoaded(imageURL, data)
                     }
                 }
             }

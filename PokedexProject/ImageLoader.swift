@@ -10,15 +10,25 @@ import Foundation
 
 class ImageLoader {
     
-    func loadImage(urlString: String, imageLoaded: @escaping (Data) -> Void) {
-                
-        guard let url = URL(string: urlString) else { return }
-
-        URLSession.shared.dataTask(with: url) { (data, response, error) in
-
-            guard let data = data else { return }
-
-             imageLoaded(data)
-        }.resume()
+    // Given a Pokemon id, load the PokemonForm, then get
+    // the 'front_default' image into the given ImageView
+    func loadPokemonImage(id: Int, imageLoaded: @escaping (Data) -> Void) {
+        
+        let url = "\(K.ServiceURL.getPokemonForm)\(id)"
+        
+        let network = NetworkController()
+        network.loadPokemonData(urlString: url) { (data) in
+            
+            let parser = PokemonFormParser()
+            parser.parse(data: data) { (formData) in
+                if let imageUrl = formData.sprites?.front_default {
+                    
+                    network.loadPokemonData(urlString: imageUrl) { (data) in
+                        
+                        imageLoaded(data)
+                    }
+                }
+            }
+        }
     }
 }

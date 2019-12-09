@@ -54,4 +54,44 @@ class PokedexProjectTests: XCTestCase {
         // 15 second wait for timeout
         waitForExpectations(timeout: 15, handler: nil)
     }
+    
+    func testPokemenFormParser() {
+        // need this to keep testing alive until
+        // the background process finishes
+        let expectation = self.expectation(description: "Testing Pokemon Form Data Parser")
+        
+        let testBundle = Bundle(for: type(of: self))
+        let filename = "pokemon-form_1"
+
+        let path = testBundle.path(forResource: filename, ofType: "json")
+        XCTAssertNotNil(path, "\(filename) file not found")
+
+        guard let cleanPath = path else { return }
+
+        // convert into URL
+        let url = NSURL.fileURL(withPath: cleanPath)
+        do {
+            // load json into Data object
+            let data = try Data(contentsOf: url)
+
+            XCTAssertNotNil(data, "Data came back nil")
+
+            let parser = PokemonFormParser()
+            parser.parse(data: data) { (pokemonFromData) in
+                
+                print ("id: \(pokemonFromData.id)")
+                print ("name: \(pokemonFromData.pokemon?.name)")
+                print ("url: \(pokemonFromData.pokemon?.url)")
+                print ("name: \(pokemonFromData.sprites?.front_default)")
+
+                XCTAssertTrue(pokemonFromData.pokemon?.name == "bulbasaur")
+
+                expectation.fulfill()
+            }
+        } catch {
+            assertionFailure("Error: " + error.localizedDescription)
+        }
+        // 15 second wait for timeout
+        waitForExpectations(timeout: 15, handler: nil)
+    }
 }

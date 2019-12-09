@@ -10,15 +10,13 @@ import Foundation
 
 class NetworkController {
 
-    func loadDataFromURL(urlString: String, completed: @escaping (Data) -> ()) {
+    func loadPokemonData(urlString: String, completed: @escaping (Data) -> ()) {
 
         guard let url = URL(string: urlString) else { return }
         
         let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
             
             guard let data = data else { return }
-
-            print ("Data: \(String(bytes: data, encoding: .utf8)!)")
 
             completed(data)
         }

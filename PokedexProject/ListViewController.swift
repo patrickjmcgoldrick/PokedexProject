@@ -10,8 +10,11 @@ import UIKit
 
 class ListViewController: UIViewController {
 
+    @IBOutlet weak var searchBar: UISearchBar!
+    
     @IBOutlet weak var collectionView: UICollectionView!
     
+    var allLoadedSoFar = [Pokemon]()
     var pokemen = [Pokemon]()
     var defaultImage = UIImage(named: "defaultPokemon")
     
@@ -20,6 +23,7 @@ class ListViewController: UIViewController {
         
         loadPokemon(offset: 0)
         //CoreDataDeleteOps.shared.deleteAllPokemen()
+        searchBar.delegate = self
         collectionView.dataSource = self
         collectionView.delegate = self
     }
@@ -38,7 +42,8 @@ class ListViewController: UIViewController {
                         CoreDataSaveOps.shared.savePokemon(pokemon: result)
                     }
                     self.pokemen = CoreDataFetchOps.shared.getAllPokemen()
-                
+                    self.allLoadedSoFar = self.pokemen
+                    
                     DispatchQueue.main.async {
                         self.collectionView.reloadData()
                     }
@@ -75,36 +80,42 @@ extension ListViewController: UICollectionViewDataSource {
         } else {
             // otherwise, load image and save for next time
             cell.imageView.image = defaultImage
-            ImageLoader().loadPokemonImage(id: (indexPath.row + 1)) { (imageURL, data) in
-                
-                self.updatePokemon()
-                
-                DispatchQueue.main.async {
-                    cell.imageView.image = UIImage(data: data)
-                }
+            if pokemon.id != 0 {
+                updatePokemon(id: Int(pokemon.id), imageView: cell.imageView)
+            } else {
+                updatePokemon(id: (indexPath.row + 1), imageView: cell.imageView)
             }
         }
         return cell
     }
     
-    private func updatePokemon() {
-        // TODO: cache image data
-        //let updatePokemon = PokemonData(name: pokemon.name, url: pokemon.detailURL, imageURL: imageURL, imageData: data)
-        //self.pokemen[indexPath.row] = updatePokemon
-
+    private func updatePokemon(id: Int, imageView: UIImageView) {
+        ImageLoader().loadPokemonImage(id: id) { (imageURL, data) in
+                        
+            DispatchQueue.main.async {
+                imageView.image = UIImage(data: data)
+            }
+        }
     }
 }
 
 extension ListViewController: UICollectionViewDelegate {
 }
 
-extension UISearchBarDelegate {
+extension ListViewController: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        print(searchText)
-        let list = CoreDataFetchOps.shared.searchPokemenFor(substring: searchText)
-        for pokemon in list {
-            print(pokemon.name?.description)
+
+        if searchText == "" {
+            
+            pokemen = allLoadedSoFar
+
+        } else {
+            
+            let limitedList = CoreDataFetchOps.shared.searchPokemenFor(substring: searchText)
+            pokemen = limitedList
         }
+
+        collectionView.reloadData()
     }
 }

@@ -84,6 +84,7 @@
                     <navigationItem key="navigationItem" title="Pokedex" id="dtn-0R-9k1"/>
                     <connections>
                         <outlet property="collectionView" destination="4UP-Na-IG2" id="1gS-8l-0JI"/>
+                        <outlet property="searchBar" destination="Knn-JS-eLi" id="ei9-8U-k7Z"/>
                         <segue destination="VLj-Ao-BAg" kind="show" id="e8a-FY-4Pv"/>
                     </connections>
                 </viewController>

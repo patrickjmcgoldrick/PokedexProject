@@ -17,6 +17,10 @@ struct K {
         static let getPokemonForm = "https://pokeapi.co/api/v2/pokemon-form/"
     }
     
+    struct Segue {
+        
+        static let loggedIn = "loggedInSegue"
+    }
     struct TestCase {
         
         static let expectedPokemenCount = 964

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="jQa-ew-M5v">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="gHQ-DX-5VZ">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
@@ -34,17 +34,19 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6Qu-mU-9ZS">
-                                                    <rect key="frame" x="8" y="8" width="113" height="112"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" secondItem="6Qu-mU-9ZS" secondAttribute="height" multiplier="1:1" id="RGr-lW-oTt"/>
-                                                    </constraints>
+                                                    <rect key="frame" x="8" y="8" width="113" height="88"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="exB-cl-HnP">
-                                                    <rect key="frame" x="39" y="120" width="51.5" height="0.0"/>
+                                                    <rect key="frame" x="39" y="96" width="51.5" height="24"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="heart.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="b5P-Lf-5Dz">
+                                                    <rect key="frame" x="100.5" y="9.5" width="20.5" height="17.5"/>
+                                                    <color key="tintColor" systemColor="systemPinkColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <viewLayoutGuide key="safeArea" id="OB9-8S-t4c"/>
+                                                </imageView>
                                             </subviews>
                                             <color key="backgroundColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
@@ -52,6 +54,8 @@
                                                 <constraint firstItem="6Qu-mU-9ZS" firstAttribute="trailing" secondItem="Sfm-gd-lgf" secondAttribute="trailingMargin" id="SS7-58-1uT"/>
                                                 <constraint firstItem="6Qu-mU-9ZS" firstAttribute="leading" secondItem="Sfm-gd-lgf" secondAttribute="leadingMargin" id="VL1-sP-XbW"/>
                                                 <constraint firstItem="6Qu-mU-9ZS" firstAttribute="top" secondItem="Sfm-gd-lgf" secondAttribute="topMargin" id="Ylf-bW-grY"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="b5P-Lf-5Dz" secondAttribute="trailing" id="e02-6i-A55"/>
+                                                <constraint firstItem="b5P-Lf-5Dz" firstAttribute="top" secondItem="Sfm-gd-lgf" secondAttribute="topMargin" id="q5e-v5-rPx"/>
                                                 <constraint firstItem="exB-cl-HnP" firstAttribute="top" secondItem="6Qu-mU-9ZS" secondAttribute="bottom" id="vq2-Uh-yd1"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="exB-cl-HnP" secondAttribute="bottom" constant="8" id="yix-N3-6Td"/>
                                             </constraints>
@@ -59,6 +63,7 @@
                                         <size key="customSize" width="129" height="136"/>
                                         <connections>
                                             <outlet property="imageView" destination="6Qu-mU-9ZS" id="tdD-XR-N42"/>
+                                            <outlet property="ivFavorite" destination="b5P-Lf-5Dz" id="4Ps-hO-Dle"/>
                                             <outlet property="lblName" destination="exB-cl-HnP" id="sEj-h9-Oa2"/>
                                         </connections>
                                     </collectionViewCell>
@@ -70,6 +75,7 @@
                             </searchBar>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="Knn-JS-eLi" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="2Kc-dV-lPi"/>
                             <constraint firstItem="Knn-JS-eLi" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="Ccc-bP-rN5"/>
@@ -80,15 +86,24 @@
                             <constraint firstItem="Knn-JS-eLi" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="eaY-jm-FcN"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="Xmq-Ia-9ab" appends="YES" id="Eoj-BG-LBU"/>
+                        </connections>
                     </view>
                     <navigationItem key="navigationItem" title="Pokedex" id="dtn-0R-9k1"/>
                     <connections>
                         <outlet property="collectionView" destination="4UP-Na-IG2" id="1gS-8l-0JI"/>
+                        <outlet property="longPressGuestureRec" destination="Xmq-Ia-9ab" id="gci-7h-Wf4"/>
                         <outlet property="searchBar" destination="Knn-JS-eLi" id="ei9-8U-k7Z"/>
-                        <segue destination="VLj-Ao-BAg" kind="show" id="e8a-FY-4Pv"/>
+                        <segue destination="VLj-Ao-BAg" kind="show" identifier="listToDetail" id="e8a-FY-4Pv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="Xmq-Ia-9ab">
+                    <connections>
+                        <action selector="longPressAction:" destination="BYZ-38-t0r" id="oW8-IY-lDn"/>
+                    </connections>
+                </pongPressGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1957.9710144927537" y="97.767857142857139"/>
         </scene>
@@ -159,7 +174,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Favorites" id="rMZ-cZ-tVg"/>
                     <connections>
-                        <segue destination="VLj-Ao-BAg" kind="show" id="1rK-ZU-iEG"/>
+                        <segue destination="VLj-Ao-BAg" kind="show" identifier="favoriteToDetail" id="1rK-ZU-iEG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Nas-Fp-r5q" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -209,7 +224,7 @@
                                     <action selector="btnActionLogin:" destination="jQa-ew-M5v" eventType="touchUpInside" id="LPM-s6-nz8"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SVx-Nv-CHy">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SVx-Nv-CHy">
                                 <rect key="frame" x="20" y="400" width="374" height="0.0"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                 <color key="textColor" red="1" green="0.19320292350485113" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -248,7 +263,7 @@
                         <outlet property="lblErrorMsg" destination="SVx-Nv-CHy" id="bMR-M1-gOT"/>
                         <outlet property="tfEmail" destination="ejK-au-LDn" id="cie-wJ-cxC"/>
                         <outlet property="tfPassword" destination="wiz-gZ-fQs" id="JkP-BY-S12"/>
-                        <segue destination="gHQ-DX-5VZ" kind="show" id="re8-06-htF"/>
+                        <segue destination="gHQ-DX-5VZ" kind="show" identifier="loggedInSegue" id="re8-06-htF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bfE-Li-Ex0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -276,9 +291,10 @@
         </scene>
     </scenes>
     <resources>
+        <image name="heart.fill" catalog="system" width="64" height="54"/>
         <image name="logo" width="64" height="64"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="e8a-FY-4Pv"/>
+        <segue reference="1rK-ZU-iEG"/>
     </inferredMetricsTieBreakers>
 </document>

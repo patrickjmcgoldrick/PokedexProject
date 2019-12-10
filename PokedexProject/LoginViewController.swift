@@ -38,9 +38,11 @@ class LoginViewController: UIViewController {
         let users = CoreDataFetchOps.shared.getUserby(email: email)
         if users.count != 0 {
             if users[0].password == password {
-                print("Logged in")
+                
+                User.loggedInUserEmail = email
+                performSegue(withIdentifier: K.Segue.loggedIn, sender: self)
             } else {
-                lblErrorMsg.text = "Invalid Password, Please try again."
+                lblErrorMsg.text = "Invalid email / password, Please try again."
             }
         }
     }
@@ -52,8 +54,11 @@ class LoginViewController: UIViewController {
         return emailPred.evaluate(with: emailStr)
     }
 
+    /*
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == K.Segue.loggedIn {
+            User.loggedInUserEmail =
+        }
     }
+ */
 }

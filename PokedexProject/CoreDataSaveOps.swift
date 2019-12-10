@@ -16,6 +16,15 @@ class CoreDataSaveOps {
     
     private init() {}
     
+    func saveFavorite(email: String, pokemonId: Int16) {
+        
+        let favoriteManagedObject = Favorite(context: context)
+        favoriteManagedObject.userEmail = email
+        favoriteManagedObject.pokemonId = pokemonId
+        
+        coreDataManager.saveContext(context: context)
+    }
+
     func saveUser(userObject: UserModel) {
         
         let userManagedObject = User(context: context)

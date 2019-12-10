@@ -22,12 +22,12 @@ class CoreDataDeleteOps {
         }
     }
     
-    func deleteBy(email: String) {
-        let fetchRequest: NSFetchRequest<User> = User.fetchRequest()
-        fetchRequest.predicate = NSPredicate(format: "email = %@", email)
-        let sports = coreDataManager.fetchObjects(fetchRequest: fetchRequest, context: context)
-        if sports.count != 0 {
-            coreDataManager.batchDelete(objects: sports, context: context)
+    func deleteFavoriteBy(email: String, pokemonId: Int16) {
+        let fetchRequest: NSFetchRequest<Favorite> = Favorite.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "userEmail = %@ AND pokemonId = %d", email, pokemonId)
+        let favorites = coreDataManager.fetchObjects(fetchRequest: fetchRequest, context: context)
+        if favorites.count != 0 {
+            coreDataManager.batchDelete(objects: favorites, context: context)
         }
     }
 }

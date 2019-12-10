@@ -8,14 +8,18 @@
 
 import UIKit
 
-class ListViewController: UIViewController {
+class ListViewController: UIViewController, UIGestureRecognizerDelegate {
 
     @IBOutlet weak var searchBar: UISearchBar!
     
     @IBOutlet weak var collectionView: UICollectionView!
     
+    @IBOutlet var longPressGuestureRec: UILongPressGestureRecognizer!
+    
     var allLoadedSoFar = [Pokemon]()
     var pokemen = [Pokemon]()
+    var favorites = [Favorite]()
+    var gEmail = "x@y.com"
     var defaultImage = UIImage(named: "defaultPokemon")
     
     override func viewDidLoad() {
@@ -26,6 +30,11 @@ class ListViewController: UIViewController {
         searchBar.delegate = self
         collectionView.dataSource = self
         collectionView.delegate = self
+        longPressGuestureRec.delegate = self
+       //TODO: Use global variable
+        CoreDataSaveOps.shared.saveFavorite(email: gEmail, pokemonId: 3)
+        favorites = CoreDataFetchOps.shared.getFavoritesBy(email: gEmail)
+        print(favorites)
     }
     
     private func loadPokemon(offset: Int) {
@@ -51,6 +60,34 @@ class ListViewController: UIViewController {
             }
         }
     }
+       
+    /// adapted from: https://stackoverflow.com/questions/18848725/long-press-gesture-on-uicollectionviewcell
+    
+    @IBAction func longPressAction(_ sender: UILongPressGestureRecognizer) {
+        if sender.state != .ended {
+            return
+        }
+        
+        let point = sender.location(in: self.collectionView)
+
+        if let indexPath = self.collectionView.indexPathForItem(at: point) {
+            // get the cell at indexPath (the one you long pressed)
+            let pokemon = pokemen[indexPath.row]
+            guard let cell = self.collectionView.cellForItem(at: indexPath) as? ListViewCell else { return }
+            
+            // flip favorite status
+            if isFavorite(pokemonId: pokemon.id) {
+                CoreDataDeleteOps.shared.deleteFavoriteBy(email: gEmail, pokemonId: pokemon.id)
+                cell.ivFavorite.isHidden = true
+            } else {
+                CoreDataSaveOps.shared.saveFavorite(email: gEmail, pokemonId: pokemon.id)
+                cell.ivFavorite.isHidden = false
+            }
+            favorites = CoreDataFetchOps.shared.getFavoritesBy(email: gEmail)
+        } else {
+            print("couldn't find index path")
+        }
+    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
   
@@ -73,7 +110,7 @@ extension ListViewController: UICollectionViewDataSource {
         
         let pokemon = pokemen[indexPath.row]
         cell.lblName.text = pokemon.name
-        
+        cell.ivFavorite.isHidden = !isFavorite(pokemonId: pokemon.id)
         // do we have the image already?
         if let imageData = pokemon.imageData {
             cell.imageView.image = UIImage(data: imageData)
@@ -89,6 +126,15 @@ extension ListViewController: UICollectionViewDataSource {
         return cell
     }
     
+    private func isFavorite(pokemonId: Int16) -> Bool {
+        for favorite in favorites {
+            if favorite.pokemonId == pokemonId {
+                return true
+            }
+        }
+        return false
+    }
+    
     private func updatePokemon(id: Int, imageView: UIImageView) {
         ImageLoader().loadPokemonImage(id: id) { (imageURL, data) in
                         
@@ -100,6 +146,11 @@ extension ListViewController: UICollectionViewDataSource {
 }
 
 extension ListViewController: UICollectionViewDelegate {
+
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        performSegue(withIdentifier: "listToDetail", sender: self)
+    }
 }
 
 extension ListViewController: UISearchBarDelegate {

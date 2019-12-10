@@ -1,4 +1,3 @@
-
 //
 //  UserModel.swift
 //  PokedexProject

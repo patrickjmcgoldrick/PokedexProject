@@ -10,7 +10,7 @@ import Foundation
 
 class NetworkController {
 
-    func loadPokemonData(urlString: String, completed: @escaping (Data) -> ()) {
+    func loadPokemonData(urlString: String, completed: @escaping (Data) -> Void) {
 
         guard let url = URL(string: urlString) else { return }
         

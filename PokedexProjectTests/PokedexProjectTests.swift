@@ -54,12 +54,11 @@ class PokedexProjectTests: XCTestCase {
         // 15 second wait for timeout
         waitForExpectations(timeout: 15, handler: nil)
     }
-    
+
     func testPokemenFormParser() {
         // need this to keep testing alive until
         // the background process finishes
         let expectation = self.expectation(description: "Testing Pokemon Form Data Parser")
-        
         let testBundle = Bundle(for: type(of: self))
         let filename = "pokemon-form_1"
 
@@ -78,11 +77,10 @@ class PokedexProjectTests: XCTestCase {
 
             let parser = PokemonFormParser()
             parser.parse(data: data) { (pokemonFromData) in
-                
-                print ("id: \(pokemonFromData.id)")
-                print ("name: \(pokemonFromData.pokemon?.name)")
-                print ("url: \(pokemonFromData.pokemon?.url)")
-                print ("name: \(pokemonFromData.sprites?.front_default)")
+                print("id: \(pokemonFromData.id)")
+                print("name: \(pokemonFromData.pokemon?.name)")
+                print("url: \(pokemonFromData.pokemon?.url)")
+                print("name: \(pokemonFromData.sprites?.front_default)")
 
                 XCTAssertTrue(pokemonFromData.pokemon?.name == "bulbasaur")
 
@@ -91,6 +89,7 @@ class PokedexProjectTests: XCTestCase {
         } catch {
             assertionFailure("Error: " + error.localizedDescription)
         }
+
         // 15 second wait for timeout
         waitForExpectations(timeout: 15, handler: nil)
     }

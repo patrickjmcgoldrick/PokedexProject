@@ -19,7 +19,7 @@ class ListViewController: UIViewController {
         super.viewDidLoad()
         
         loadPokemon(offset: 0)
-        
+        //CoreDataDeleteOps.shared.deleteAllPokemen()
         collectionView.dataSource = self
         collectionView.delegate = self
     }
@@ -28,7 +28,7 @@ class ListViewController: UIViewController {
        
         let url = "\(K.ServiceURL.getPokemen)?offset=\(offset)&limit=100"
         NetworkController().loadPokemonData(urlString: url) { (data) in
-            print (data.description)
+            print(data.description)
             
             let parser = PokemenParser()
             parser.parse(data: data) { (pokemenHeader) in
@@ -49,8 +49,7 @@ class ListViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
   
-        if let destination = segue.destination as? DetailViewController {
-            
+        if let destination = segue.destination as? DetailViewController {            
         }
     }
 }
@@ -67,9 +66,7 @@ extension ListViewController: UICollectionViewDataSource {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ListCell", for: indexPath) as? ListViewCell
             else { return UICollectionViewCell() }
         
-        
         let pokemon = pokemen[indexPath.row]
-        
         cell.lblName.text = pokemon.name
         
         // do we have the image already?
@@ -99,8 +96,15 @@ extension ListViewController: UICollectionViewDataSource {
 }
 
 extension ListViewController: UICollectionViewDelegate {
-    
-    
-    
 }
 
+extension UISearchBarDelegate {
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        print(searchText)
+        let list = CoreDataFetchOps.shared.searchPokemenFor(substring: searchText)
+        for pokemon in list {
+            print(pokemon.name?.description)
+        }
+    }
+}

@@ -37,5 +37,3 @@ struct PokemonRow: Codable {
 struct Sprites: Codable {
     var front_default: String?
 }
-
-

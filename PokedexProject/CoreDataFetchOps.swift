@@ -31,4 +31,11 @@ class CoreDataFetchOps {
         let fetchRequest: NSFetchRequest<Pokemon> = Pokemon.fetchRequest()
         return coreDataManager.fetchObjects(fetchRequest: fetchRequest, context: context)
     }
+    
+    func searchPokemenFor(substring: String) -> [Pokemon] {
+        let fetchRequest: NSFetchRequest<Pokemon> = Pokemon.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "name CONTAINS[c] %@", substring)
+        return coreDataManager.fetchObjects(fetchRequest: fetchRequest, context: context)
+    }
+    
 }

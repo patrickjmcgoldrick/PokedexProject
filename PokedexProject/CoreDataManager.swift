@@ -17,11 +17,16 @@ class CoreDataManager {
     // MARK: - Setup Core Data stack
 
     var mainContext: NSManagedObjectContext {
-        return persistentContainer.viewContext
+        let viewContext =  persistentContainer.viewContext
+        //viewContext.mergePolicy = NSMergeByPropertyStoreTrumpMergePolicy
+        return viewContext
     }
 
     var backgroundContext: NSManagedObjectContext {
-        return persistentContainer.newBackgroundContext()
+        
+        let context = persistentContainer.newBackgroundContext()
+        //context.mergePolicy = NSMergeByPropertyStoreTrumpMergePolicy
+        return context
     }
 
     private lazy var persistentContainer: NSPersistentContainer = {
@@ -45,7 +50,7 @@ class CoreDataManager {
        do {
            try context.save()
        } catch {
-           assertionFailure("Could not save of: \(error)")
+           print("Could not save of: \(error)")
        }
     }
 

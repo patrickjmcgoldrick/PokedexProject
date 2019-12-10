@@ -13,12 +13,12 @@ class CoreDataDeleteOps {
     private let context = CoreDataManager.shared.mainContext
     static let shared = CoreDataDeleteOps()
     
-    func deleteAllSports() {
-        let sports = CoreDataFetchOps.shared.getAllUsers()
-        print(sports.count)
+    func deleteAllPokemen() {
+        let pokemen = CoreDataFetchOps.shared.getAllPokemen()
+        print(pokemen.count)
         
-        if sports.count != 0 {
-            coreDataManager.batchDelete(objects: sports, context: context)
+        if pokemen.count != 0 {
+            coreDataManager.batchDelete(objects: pokemen, context: context)
         }
     }
     

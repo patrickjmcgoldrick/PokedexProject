@@ -50,10 +50,10 @@
                                             </subviews>
                                             <color key="backgroundColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
+                                                <constraint firstItem="6Qu-mU-9ZS" firstAttribute="centerX" secondItem="exB-cl-HnP" secondAttribute="centerX" id="MT6-IK-g4f"/>
                                                 <constraint firstItem="exB-cl-HnP" firstAttribute="centerX" secondItem="Sfm-gd-lgf" secondAttribute="centerX" id="Msm-rB-g9E"/>
-                                                <constraint firstItem="6Qu-mU-9ZS" firstAttribute="trailing" secondItem="Sfm-gd-lgf" secondAttribute="trailingMargin" id="SS7-58-1uT"/>
-                                                <constraint firstItem="6Qu-mU-9ZS" firstAttribute="leading" secondItem="Sfm-gd-lgf" secondAttribute="leadingMargin" id="VL1-sP-XbW"/>
                                                 <constraint firstItem="6Qu-mU-9ZS" firstAttribute="top" secondItem="Sfm-gd-lgf" secondAttribute="topMargin" id="Ylf-bW-grY"/>
+                                                <constraint firstItem="6Qu-mU-9ZS" firstAttribute="trailing" secondItem="b5P-Lf-5Dz" secondAttribute="trailing" id="dOu-lm-eQA"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="b5P-Lf-5Dz" secondAttribute="trailing" id="e02-6i-A55"/>
                                                 <constraint firstItem="b5P-Lf-5Dz" firstAttribute="top" secondItem="Sfm-gd-lgf" secondAttribute="topMargin" id="q5e-v5-rPx"/>
                                                 <constraint firstItem="exB-cl-HnP" firstAttribute="top" secondItem="6Qu-mU-9ZS" secondAttribute="bottom" id="vq2-Uh-yd1"/>

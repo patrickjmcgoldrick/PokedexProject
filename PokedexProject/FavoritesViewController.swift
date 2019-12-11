@@ -59,12 +59,22 @@ extension FavoritesViewController: UITableViewDataSource {
         
         return cell
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        guard let destination = segue.destination as? DetailViewController else { return }
+        
+        if let row = tableView.indexPathForSelectedRow?.row {
+
+            destination.pokemon = pokemen[row]
+        }
+    }
 }
 
 extension FavoritesViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        print("Selected: \(indexPath.row)")
+        performSegue(withIdentifier: K.Segue.favoriteToDetail, sender: self)
     }
 }

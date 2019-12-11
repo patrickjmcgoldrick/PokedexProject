@@ -158,7 +158,7 @@ extension ListViewController: UICollectionViewDelegate {
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        performSegue(withIdentifier: "listToDetail", sender: self)
+        performSegue(withIdentifier: K.Segue.listToDetail, sender: self)
     }
 }
 

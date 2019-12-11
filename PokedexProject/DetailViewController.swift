@@ -21,23 +21,19 @@ class DetailViewController: UIViewController, UISearchBarDelegate {
         super.viewDidLoad()
 
         if let name = pokemon?.name {
-            navigationController?.navigationBar.topItem?.title = name
+            print(name)
+            navigationController?.navigationItem.title = name
         }
-    
     }
 
-    @IBAction func segmentControl(_ sender: UISegmentedControl) {
+    @IBAction private func segmentControl(_ sender: UISegmentedControl) {
         
         switch sender.selectedSegmentIndex {
         case 0:
-            print ("detail")
-           
             view.sendSubviewToBack(evolutionPane)
 
         case 1:
-            print ("evolution")
             view.sendSubviewToBack(detailPane)
-
         default:
             break
         }

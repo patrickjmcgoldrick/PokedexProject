@@ -20,6 +20,9 @@ struct K {
     struct Segue {
         
         static let loggedIn = "loggedInSegue"
+        
+        static let listToDetail = "listToDetail"
+        static let favoriteToDetail = "favoriteToDetail"
     }
     struct TestCase {
         

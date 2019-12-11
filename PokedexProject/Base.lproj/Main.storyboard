@@ -107,17 +107,53 @@
             </objects>
             <point key="canvasLocation" x="1957.9710144927537" y="97.767857142857139"/>
         </scene>
-        <!--View Controller-->
+        <!--Detail View Controller-->
         <scene sceneID="CEc-eu-u4F">
             <objects>
-                <viewController id="VLj-Ao-BAg" sceneMemberID="viewController">
+                <viewController id="VLj-Ao-BAg" customClass="DetailViewController" customModule="PokedexProject" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="qEN-CG-dGJ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GKW-9o-7Zg">
+                                <rect key="frame" x="0.0" y="56" width="414" height="703"/>
+                                <color key="backgroundColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jAC-jB-EBl">
+                                <rect key="frame" x="0.0" y="56" width="414" height="703"/>
+                                <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="CpD-s1-arK">
+                                <rect key="frame" x="123.5" y="72" width="167" height="32"/>
+                                <segments>
+                                    <segment title="Details"/>
+                                    <segment title="Evolutions"/>
+                                </segments>
+                                <connections>
+                                    <action selector="segmentControl:" destination="VLj-Ao-BAg" eventType="valueChanged" id="EHO-WR-Ja2"/>
+                                </connections>
+                            </segmentedControl>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstAttribute="bottomMargin" secondItem="GKW-9o-7Zg" secondAttribute="bottom" id="4KJ-cj-MPp"/>
+                            <constraint firstItem="GKW-9o-7Zg" firstAttribute="leading" secondItem="Elu-l5-Lha" secondAttribute="leading" id="Fdb-Yr-Lei"/>
+                            <constraint firstItem="jAC-jB-EBl" firstAttribute="leading" secondItem="Elu-l5-Lha" secondAttribute="leading" id="NoH-mX-86Z"/>
+                            <constraint firstItem="GKW-9o-7Zg" firstAttribute="trailing" secondItem="Elu-l5-Lha" secondAttribute="trailing" id="Qwc-rF-jCC"/>
+                            <constraint firstItem="CpD-s1-arK" firstAttribute="centerX" secondItem="qEN-CG-dGJ" secondAttribute="centerX" id="cwk-aW-s4b"/>
+                            <constraint firstItem="Elu-l5-Lha" firstAttribute="trailing" secondItem="jAC-jB-EBl" secondAttribute="trailing" id="fG7-SI-NR8"/>
+                            <constraint firstItem="Elu-l5-Lha" firstAttribute="bottom" secondItem="jAC-jB-EBl" secondAttribute="bottom" id="fof-q0-SRL"/>
+                            <constraint firstItem="GKW-9o-7Zg" firstAttribute="top" secondItem="Elu-l5-Lha" secondAttribute="top" id="h9w-mR-x9K"/>
+                            <constraint firstItem="CpD-s1-arK" firstAttribute="top" secondItem="Elu-l5-Lha" secondAttribute="top" constant="16" id="vQs-B4-S3J"/>
+                            <constraint firstItem="jAC-jB-EBl" firstAttribute="top" secondItem="Elu-l5-Lha" secondAttribute="top" id="xr0-ke-9jt"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="Elu-l5-Lha"/>
                     </view>
                     <navigationItem key="navigationItem" id="YSX-8l-sD3"/>
+                    <connections>
+                        <outlet property="detailPane" destination="jAC-jB-EBl" id="FkN-oc-Xgi"/>
+                        <outlet property="evolutionPane" destination="GKW-9o-7Zg" id="2Rs-UA-v1H"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gnv-c5-HYf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

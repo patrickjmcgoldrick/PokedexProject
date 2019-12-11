@@ -29,8 +29,15 @@ class LoginViewController: UIViewController {
         guard let email = tfEmail.text else { return }
         guard let password = tfPassword.text else { return }
         
-        if !isValidEmail(emailStr: email) {
+        if !isValidEmail(email: email) {
             lblErrorMsg.text = "Email format invalid. Please retype."
+            return
+        }
+        
+        /// Login is not the place to check this, we would do it on account creation
+        /// or updating of password, but for this project with fake local passwords it's ok.
+        if !isValidPassword(password: password) {
+            lblErrorMsg.text = "Password must at least 3 characters. Please retype."
             return
         }
         
@@ -46,10 +53,17 @@ class LoginViewController: UIViewController {
         }
     }
     
-    func isValidEmail(emailStr: String) -> Bool {
+    func isValidEmail(email: String) -> Bool {
         let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
 
         let emailPred = NSPredicate(format: "SELF MATCHES %@", emailRegEx)
-        return emailPred.evaluate(with: emailStr)
+        return emailPred.evaluate(with: email)
+    }
+    
+    func isValidPassword(password: String) -> Bool {
+        if password.count >= 3 {
+            return true
+        }
+        return false
     }
 }

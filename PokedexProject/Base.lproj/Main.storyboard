@@ -107,10 +107,10 @@
             </objects>
             <point key="canvasLocation" x="1957.9710144927537" y="97.767857142857139"/>
         </scene>
-        <!--View Controller-->
+        <!--Detail View Controller-->
         <scene sceneID="CEc-eu-u4F">
             <objects>
-                <viewController id="VLj-Ao-BAg" sceneMemberID="viewController">
+                <viewController id="VLj-Ao-BAg" customClass="DetailViewController" customModule="PokedexProject" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="qEN-CG-dGJ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -169,7 +169,29 @@
                     <view key="view" contentMode="scaleToFill" id="dV0-1c-002">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="z2j-KA-A8S">
+                                <rect key="frame" x="0.0" y="56" width="414" height="703"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="FavoriteCell" id="fC6-4M-jgy">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="fC6-4M-jgy" id="bqU-v1-Gsd">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="f4A-Qm-4f6" firstAttribute="trailing" secondItem="z2j-KA-A8S" secondAttribute="trailing" id="09r-zB-xSg"/>
+                            <constraint firstItem="z2j-KA-A8S" firstAttribute="top" secondItem="f4A-Qm-4f6" secondAttribute="top" id="1Ts-gt-0Su"/>
+                            <constraint firstItem="z2j-KA-A8S" firstAttribute="leading" secondItem="f4A-Qm-4f6" secondAttribute="leading" id="WbT-VQ-TXO"/>
+                            <constraint firstItem="f4A-Qm-4f6" firstAttribute="bottom" secondItem="z2j-KA-A8S" secondAttribute="bottom" id="e3d-rc-tSm"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="f4A-Qm-4f6"/>
                     </view>
                     <navigationItem key="navigationItem" title="Favorites" id="rMZ-cZ-tVg"/>

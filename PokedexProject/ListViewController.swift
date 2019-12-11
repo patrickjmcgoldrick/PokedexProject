@@ -10,9 +10,9 @@ import UIKit
 
 class ListViewController: UIViewController, UIGestureRecognizerDelegate {
 
-    @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet private weak var searchBar: UISearchBar!
     
-    @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet private weak var collectionView: UICollectionView!
     
     @IBOutlet var longPressGuestureRec: UILongPressGestureRecognizer!
     
@@ -20,7 +20,7 @@ class ListViewController: UIViewController, UIGestureRecognizerDelegate {
     var pokemen = [Pokemon]()
     var favorites = [Favorite]()
     var gEmail = "x@y.com"
-    var defaultImage = UIImage(named: "defaultPokemon")
+    var defaultImage = UIImage(named: K.Image.defaultImage)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -63,7 +63,8 @@ class ListViewController: UIViewController, UIGestureRecognizerDelegate {
        
     /// adapted from: https://stackoverflow.com/questions/18848725/long-press-gesture-on-uicollectionviewcell
     
-    @IBAction func longPressAction(_ sender: UILongPressGestureRecognizer) {
+    @IBAction private func longPressAction(_ sender: UILongPressGestureRecognizer) {
+
         if sender.state != .ended {
             return
         }
@@ -91,7 +92,15 @@ class ListViewController: UIViewController, UIGestureRecognizerDelegate {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
   
-        if let destination = segue.destination as? DetailViewController {            
+        if let destination = segue.destination as? DetailViewController {
+
+            guard let index = collectionView.indexPathsForSelectedItems?.first?.row else { return }
+
+            destination.pokemon = pokemen[index]
+
+        } else {
+            
+            print(segue.destination.description)
         }
     }
 }

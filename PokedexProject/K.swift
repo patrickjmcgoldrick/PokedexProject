@@ -25,4 +25,9 @@ struct K {
         
         static let expectedPokemenCount = 964
     }
+    
+    struct Image {
+        
+        static let defaultImage = "defaultImage"
+    }
 }

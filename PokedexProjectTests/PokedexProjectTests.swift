@@ -23,7 +23,7 @@ class PokedexProjectTests: XCTestCase {
         // need this to keep testing alive until
         // the background process finishes
         let expectation = self.expectation(description: "Testing Pokemon Parser")
-        
+
         let testBundle = Bundle(for: type(of: self))
         let filename = "pokemen"
 
@@ -42,8 +42,7 @@ class PokedexProjectTests: XCTestCase {
 
             let parser = PokemenParser()
             parser.parse(data: data) { (pokemenHeader) in
-                
-                print ("Count: \(pokemenHeader.count)")
+
                 XCTAssertTrue(pokemenHeader.count == K.TestCase.expectedPokemenCount)
 
                 expectation.fulfill()
@@ -77,10 +76,6 @@ class PokedexProjectTests: XCTestCase {
 
             let parser = PokemonFormParser()
             parser.parse(data: data) { (pokemonFromData) in
-                print("id: \(pokemonFromData.id)")
-                print("name: \(pokemonFromData.pokemon?.name)")
-                print("url: \(pokemonFromData.pokemon?.url)")
-                print("name: \(pokemonFromData.sprites?.front_default)")
 
                 XCTAssertTrue(pokemonFromData.pokemon?.name == "bulbasaur")
 

@@ -14,7 +14,7 @@ class LoginViewController: UIViewController {
     
     @IBOutlet private weak var tfPassword: UITextField!
     
-    @IBOutlet weak var lblErrorMsg: UILabel!
+    @IBOutlet private weak var lblErrorMsg: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,8 +24,7 @@ class LoginViewController: UIViewController {
         CoreDataSaveOps.shared.saveUser(userObject: user)
     }
     
-    
-    @IBAction func btnActionLogin(_ sender: Any) {
+    @IBAction private func btnActionLogin(_ sender: Any) {
         
         guard let email = tfEmail.text else { return }
         guard let password = tfPassword.text else { return }
@@ -47,18 +46,10 @@ class LoginViewController: UIViewController {
         }
     }
     
-    func isValidEmail(emailStr:String) -> Bool {
+    func isValidEmail(emailStr: String) -> Bool {
         let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
 
-        let emailPred = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+        let emailPred = NSPredicate(format: "SELF MATCHES %@", emailRegEx)
         return emailPred.evaluate(with: emailStr)
     }
-
-    /*
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == K.Segue.loggedIn {
-            User.loggedInUserEmail =
-        }
-    }
- */
 }

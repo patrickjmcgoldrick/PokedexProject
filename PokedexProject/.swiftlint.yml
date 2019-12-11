@@ -83,6 +83,8 @@ identifier_name:
   excluded:
     - id
     - front_default
+    - evolves_to
+    - evolution_chain
 number_separator:
   minimum_length: 5
 file_name:

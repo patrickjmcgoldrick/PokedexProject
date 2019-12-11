@@ -44,10 +44,7 @@ class CoreDataSaveOps {
         //pokemonMO.imageData = Data()
         let elems = pokemon.url.split(separator: "/")
         pokemonMO.id = Int16(elems[elems.count - 1].description) ?? 0
-        do {
+
         coreDataManager.saveContext(context: backgroundContext)
-        } catch {
-            print("Safe Error: \(error)")
-        }
     }
 }

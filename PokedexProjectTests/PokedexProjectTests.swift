@@ -88,4 +88,79 @@ class PokedexProjectTests: XCTestCase {
         // 15 second wait for timeout
         waitForExpectations(timeout: 15, handler: nil)
     }
+
+    func testEvolutionChainParser() {
+        // need this to keep testing alive until
+        // the background process finishes
+        let expectation = self.expectation(description: "Testing Evolution Chain Parser")
+
+        let testBundle = Bundle(for: type(of: self))
+        let filename = "evolution-chain_2"
+        //let filename = "familtyTree"
+
+        let path = testBundle.path(forResource: filename, ofType: "json")
+        XCTAssertNotNil(path, "\(filename) file not found")
+
+        guard let cleanPath = path else { return }
+
+        // convert into URL
+        let url = NSURL.fileURL(withPath: cleanPath)
+        do {
+            // load json into Data object
+            let data = try Data(contentsOf: url)
+
+            XCTAssertNotNil(data, "Data came back nil")
+
+            let parser = EvolutionParser()
+            parser.parse(data: data) { (evolutionChain) in
+
+                print(evolutionChain.chain?.species)
+                print(evolutionChain.chain?.evolves_to[0].species)
+                print(evolutionChain.chain?.evolves_to[0].evolves_to[0].species)
+
+                expectation.fulfill()
+            }
+        } catch {
+            assertionFailure("Error: " + error.localizedDescription)
+        }
+
+        // 15 second wait for timeout
+        waitForExpectations(timeout: 15, handler: nil)
+    }
+
+    func testSpeciesParser() {
+        // need this to keep testing alive until
+        // the background process finishes
+        let expectation = self.expectation(description: "Testing Species Parser")
+
+        let testBundle = Bundle(for: type(of: self))
+        let filename = "pokemon-species_413"
+        //let filename = "familtyTree"
+
+        let path = testBundle.path(forResource: filename, ofType: "json")
+        XCTAssertNotNil(path, "\(filename) file not found")
+
+        guard let cleanPath = path else { return }
+
+        // convert into URL
+        let url = NSURL.fileURL(withPath: cleanPath)
+        do {
+            // load json into Data object
+            let data = try Data(contentsOf: url)
+
+            XCTAssertNotNil(data, "Data came back nil")
+
+            let parser = SpeciesParser()
+            parser.parse(data: data) { (speciesData) in
+
+                print(speciesData.evolution_chain?.url as Any)
+                expectation.fulfill()
+            }
+        } catch {
+            assertionFailure("Error: " + error.localizedDescription)
+        }
+
+        // 15 second wait for timeout
+        waitForExpectations(timeout: 15, handler: nil)
+    }
 }

@@ -32,7 +32,7 @@ class ListViewController: UIViewController, UIGestureRecognizerDelegate {
         collectionView.delegate = self
         longPressGuestureRec.delegate = self
        //TODO: Use global variable
-        CoreDataSaveOps.shared.saveFavorite(email: gEmail, pokemonId: 3)
+        
         favorites = CoreDataFetchOps.shared.getFavoritesBy(email: gEmail)
         print(favorites)
     }

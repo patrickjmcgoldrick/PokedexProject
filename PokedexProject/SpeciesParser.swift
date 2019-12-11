@@ -1,15 +1,16 @@
 //
-//  EvolutionParser.swift
+//  PokemonSpeciesParser.swift
 //  PokedexProject
 //
 //  Created by dirtbag on 12/10/19.
 //  Copyright © 2019 dirtbag. All rights reserved.
 //
+
 import Foundation
 
-class EvolutionParser {
+class SpeciesParser {
 
-    func parse(data: Data, parsed: @escaping (EvolutionData) -> Void) {
+    func parse(data: Data, parsed: @escaping (SpeciesData) -> Void) {
                      
         // background the loading / parsing elements
         DispatchQueue.global(qos: .background).async {
@@ -19,10 +20,10 @@ class EvolutionParser {
                 // create decoder
                 let jsonDecoder = JSONDecoder()
 
-                // decode json into structs
-                let evolutionData = try jsonDecoder.decode(EvolutionData.self, from: data)
+                // decode json into structsspeciesData
+                let speciesData = try jsonDecoder.decode(SpeciesData.self, from: data)
 
-                parsed(evolutionData)
+                parsed(speciesData)
            
             } catch {
                 print("Error Parsing JSON: \(error.localizedDescription)")

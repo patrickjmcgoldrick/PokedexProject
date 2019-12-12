@@ -25,6 +25,10 @@ class DetailViewController: UIViewController, UISearchBarDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        /*
+        cardView.lblName.text = "Patrick"
+        cardView.imageView.image = UIImage(named: K.Image.defaultImage)
+        */
         favorites = CoreDataFetchOps.shared.getFavoritesBy(email: gEmail)
 
         if let pokemon = pokemon {

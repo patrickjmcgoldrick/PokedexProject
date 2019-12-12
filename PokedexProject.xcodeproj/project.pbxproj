@@ -12,6 +12,8 @@
 		5E38E11523A2070D002A6F18 /* pokemon_1.json in Resources */ = {isa = PBXBuildFile; fileRef = 5E38E11423A2070C002A6F18 /* pokemon_1.json */; };
 		5E38E11723A207FC002A6F18 /* PokemonParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E38E11623A207FC002A6F18 /* PokemonParser.swift */; };
 		5E38E11923A20B31002A6F18 /* PokemonListData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E38E11823A20B31002A6F18 /* PokemonListData.swift */; };
+		5E38E11C23A21FA4002A6F18 /* CardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5E38E11B23A21FA4002A6F18 /* CardView.xib */; };
+		5E38E11E23A2246C002A6F18 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E38E11D23A2246C002A6F18 /* CardView.swift */; };
 		5E43767C23A07FFE003E0012 /* evolution-chain_2.json in Resources */ = {isa = PBXBuildFile; fileRef = 5E43767B23A07FFE003E0012 /* evolution-chain_2.json */; };
 		5E43768023A09649003E0012 /* pokemon-species_413.json in Resources */ = {isa = PBXBuildFile; fileRef = 5E43767F23A09649003E0012 /* pokemon-species_413.json */; };
 		5E43768223A097E7003E0012 /* SpeciesParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E43768123A097E7003E0012 /* SpeciesParser.swift */; };
@@ -69,6 +71,8 @@
 		5E38E11423A2070C002A6F18 /* pokemon_1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = pokemon_1.json; path = testData/pokemon_1.json; sourceTree = SOURCE_ROOT; };
 		5E38E11623A207FC002A6F18 /* PokemonParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonParser.swift; sourceTree = "<group>"; };
 		5E38E11823A20B31002A6F18 /* PokemonListData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonListData.swift; sourceTree = "<group>"; };
+		5E38E11B23A21FA4002A6F18 /* CardView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardView.xib; sourceTree = SOURCE_ROOT; };
+		5E38E11D23A2246C002A6F18 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		5E43767B23A07FFE003E0012 /* evolution-chain_2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = "evolution-chain_2.json"; path = "testData/evolution-chain_2.json"; sourceTree = SOURCE_ROOT; };
 		5E43767F23A09649003E0012 /* pokemon-species_413.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = "pokemon-species_413.json"; path = "testData/pokemon-species_413.json"; sourceTree = SOURCE_ROOT; };
 		5E43768123A097E7003E0012 /* SpeciesParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeciesParser.swift; sourceTree = "<group>"; };
@@ -186,6 +190,8 @@
 		5E9E62B4239ADF33001C55BF /* PokedexProject */ = {
 			isa = PBXGroup;
 			children = (
+				5E38E11B23A21FA4002A6F18 /* CardView.xib */,
+				5E38E11D23A2246C002A6F18 /* CardView.swift */,
 				5E38E11A23A20F35002A6F18 /* Parsing */,
 				5E7CB2CE239DE966003E082E /* CoreData */,
 				5E9E62B5239ADF33001C55BF /* AppDelegate.swift */,
@@ -338,6 +344,7 @@
 			files = (
 				5E9E62C5239ADF35001C55BF /* LaunchScreen.storyboard in Resources */,
 				5E9E62C2239ADF35001C55BF /* Assets.xcassets in Resources */,
+				5E38E11C23A21FA4002A6F18 /* CardView.xib in Resources */,
 				5E9E62BD239ADF33001C55BF /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -402,6 +409,7 @@
 				5E38E11923A20B31002A6F18 /* PokemonListData.swift in Sources */,
 				5EC61A50239F79D50071DE34 /* EvolutionParser.swift in Sources */,
 				5E9E62B6239ADF33001C55BF /* AppDelegate.swift in Sources */,
+				5E38E11E23A2246C002A6F18 /* CardView.swift in Sources */,
 				5EC61A52239FE5570071DE34 /* User.swift in Sources */,
 				5EC61A4E239F769F0071DE34 /* EvolutionData.swift in Sources */,
 				5E7CB2D8239DEF1A003E082E /* UserModel.swift in Sources */,

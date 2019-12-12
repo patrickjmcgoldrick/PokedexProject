@@ -77,8 +77,7 @@ class PokedexProjectTests: XCTestCase {
 
             let parser = PokemonParser()
             parser.parse(data: data) { (pokemonData) in
-
-                //XCTAssertTrue(pokemonData == K.TestCase.expectedPokemenCount)
+                XCTAssertTrue(pokemonData.abilities[0].ability.name == "chlorophyll")
 
                 expectation.fulfill()
             }

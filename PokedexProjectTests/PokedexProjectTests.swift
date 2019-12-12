@@ -130,7 +130,6 @@ class PokedexProjectTests: XCTestCase {
 
         let testBundle = Bundle(for: type(of: self))
         let filename = "evolution-chain_2"
-        //let filename = "familtyTree"
 
         let path = testBundle.path(forResource: filename, ofType: "json")
         XCTAssertNotNil(path, "\(filename) file not found")
@@ -148,10 +147,17 @@ class PokedexProjectTests: XCTestCase {
             let parser = EvolutionParser()
             parser.parse(data: data) { (evolutionChain) in
 
-                print(evolutionChain.chain?.species)
-                print(evolutionChain.chain?.evolves_to[0].species)
-                print(evolutionChain.chain?.evolves_to[0].evolves_to[0].species)
+                
+                print(evolutionChain.chain.species)
+                XCTAssertTrue(evolutionChain.chain.species.name == "charmander")
 
+                var step = evolutionChain.chain.evolves_to
+                
+                while step.count > 0 {
+                    print(step[0].species)
+                    step = step[0].evolves_to
+                }
+                
                 expectation.fulfill()
             }
         } catch {

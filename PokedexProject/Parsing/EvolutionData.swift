@@ -8,15 +8,15 @@
 import Foundation
 
 struct EvolutionData: Codable {
-    var chain: Evolution?
+    var chain: Evolution
 }
 
 struct Evolution: Codable {
     var evolves_to: [Evolution]
-    var species: Species?
+    var species: Species
 }
 
 struct Species: Codable {
-    var name: String?
-    var url: String?
+    var name: String
+    var url: String
 }

@@ -10,19 +10,34 @@ import UIKit
 
 class DetailViewController: UIViewController, UISearchBarDelegate {
 
-    var pokemon: Pokemon?
+    @IBOutlet weak var imageMain: UIImageView!
+    
+    @IBOutlet weak var imageFavorited: UIImageView!
+    
+    
     
     
     @IBOutlet weak var detailPane: UIView!
     
     @IBOutlet weak var evolutionPane: UIView!
     
+    var pokemon: Pokemon?
+    var favorites = [Favorite]()
+    var gEmail = "x@y.com"
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        if let name = pokemon?.name {
-            print(name)
-            navigationController?.navigationItem.title = name
+        favorites = CoreDataFetchOps.shared.getFavoritesBy(email: gEmail)
+
+        if let pokemon = pokemon {
+            if let data = pokemon.imageData {
+                imageMain.image = UIImage(data: data)
+            }
+            if isFavorite(pokemonId: pokemon.id) {
+                imageFavorited.isHighlighted = true
+            }
+            print(pokemon.imageURL)
         }
     }
 
@@ -38,4 +53,14 @@ class DetailViewController: UIViewController, UISearchBarDelegate {
             break
         }
     }
+    
+    private func isFavorite(pokemonId: Int16) -> Bool {
+        for favorite in favorites {
+            if favorite.pokemonId == pokemonId {
+                return true
+            }
+        }
+        return false
+    }
+
 }

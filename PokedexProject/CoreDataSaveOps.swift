@@ -34,6 +34,10 @@ class CoreDataSaveOps {
         coreDataManager.saveContext(context: context)
     }
     
+    func savePokemon(pokemon: Pokemon) {
+        coreDataManager.saveContext(context: context)
+    }
+    
     func savePokemon(pokemon: PokemonData) {
         let pokemonMO = Pokemon(context: backgroundContext)
         pokemonMO.name = pokemon.name

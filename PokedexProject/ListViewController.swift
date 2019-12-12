@@ -34,7 +34,6 @@ class ListViewController: UIViewController, UIGestureRecognizerDelegate {
        //TODO: Use global variable
         
         favorites = CoreDataFetchOps.shared.getFavoritesBy(email: gEmail)
-        print(favorites)
     }
     
     private func loadPokemon(offset: Int) {
@@ -72,6 +71,7 @@ class ListViewController: UIViewController, UIGestureRecognizerDelegate {
         let point = sender.location(in: self.collectionView)
 
         if let indexPath = self.collectionView.indexPathForItem(at: point) {
+
             // get the cell at indexPath (the one you long pressed)
             let pokemon = pokemen[indexPath.row]
             guard let cell = self.collectionView.cellForItem(at: indexPath) as? ListViewCell else { return }
@@ -128,11 +128,28 @@ extension ListViewController: UICollectionViewDataSource {
             cell.imageView.image = defaultImage
             if pokemon.id != 0 {
                 updatePokemon(id: Int(pokemon.id), imageView: cell.imageView)
-            } else {
+            }
+                /*
+            else {
                 updatePokemon(id: (indexPath.row + 1), imageView: cell.imageView)
             }
+ */
         }
         return cell
+    }
+    
+    private func updatePokemon(id: Int, imageView: UIImageView) {
+        ImageLoader().loadPokemonImage(id: id) { (imageURL, data) in
+            let pokemon = CoreDataFetchOps.shared.getPokemonById(id: Int16(id))
+            if let pokemon = pokemon {
+                pokemon.imageURL = imageURL
+                pokemon.imageData = data
+                CoreDataSaveOps.shared.savePokemon(pokemon: pokemon)
+            }
+            DispatchQueue.main.async {
+                imageView.image = UIImage(data: data)
+            }
+        }
     }
     
     private func isFavorite(pokemonId: Int16) -> Bool {
@@ -142,15 +159,6 @@ extension ListViewController: UICollectionViewDataSource {
             }
         }
         return false
-    }
-    
-    private func updatePokemon(id: Int, imageView: UIImageView) {
-        ImageLoader().loadPokemonImage(id: id) { (imageURL, data) in
-                        
-            DispatchQueue.main.async {
-                imageView.image = UIImage(data: data)
-            }
-        }
     }
 }
 
@@ -178,4 +186,5 @@ extension ListViewController: UISearchBarDelegate {
 
         collectionView.reloadData()
     }
+    
 }

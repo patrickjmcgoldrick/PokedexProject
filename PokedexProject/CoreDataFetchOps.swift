@@ -49,10 +49,17 @@ class CoreDataFetchOps {
         return coreDataManager.fetchObjects(fetchRequest: fetchRequest, context: context)
     }
     
+    func getPokemonById(id: Int16) -> Pokemon? {
+
+        let fetchRequest: NSFetchRequest<Pokemon> = Pokemon.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "id = %d", id)
+        return coreDataManager.fetchObjects(fetchRequest: fetchRequest, context: context).first
+    }
+    
     func getPokemenByIds(ids: [Int16]) -> [Pokemon] {
 
         let fetchRequest: NSFetchRequest<Pokemon> = Pokemon.fetchRequest()
         fetchRequest.predicate = NSPredicate(format: "id IN %@", ids)
         return coreDataManager.fetchObjects(fetchRequest: fetchRequest, context: context)
-    } 
+    }
 }

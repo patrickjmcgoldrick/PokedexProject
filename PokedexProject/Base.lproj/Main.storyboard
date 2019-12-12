@@ -121,7 +121,26 @@
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jAC-jB-EBl">
                                 <rect key="frame" x="0.0" y="56" width="414" height="703"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Um7-OA-wsw">
+                                        <rect key="frame" x="159" y="80" width="96" height="96"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="96" id="e5n-AX-sXa"/>
+                                            <constraint firstAttribute="width" secondItem="Um7-OA-wsw" secondAttribute="height" multiplier="1:1" id="eu9-8l-zXn"/>
+                                        </constraints>
+                                    </imageView>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="heart" catalog="system" highlightedImage="heart.fill" translatesAutoresizingMaskIntoConstraints="NO" id="Xsz-lp-y4Z">
+                                        <rect key="frame" x="385.5" y="9.5" width="20.5" height="17.5"/>
+                                        <color key="tintColor" systemColor="systemPinkColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </imageView>
+                                </subviews>
                                 <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="Xsz-lp-y4Z" firstAttribute="top" secondItem="jAC-jB-EBl" secondAttribute="topMargin" id="Ftr-dn-FSb"/>
+                                    <constraint firstItem="Xsz-lp-y4Z" firstAttribute="trailing" secondItem="jAC-jB-EBl" secondAttribute="trailingMargin" id="Y8b-uR-XoK"/>
+                                    <constraint firstItem="Um7-OA-wsw" firstAttribute="centerX" secondItem="jAC-jB-EBl" secondAttribute="centerX" id="c7e-Km-YdJ"/>
+                                    <constraint firstItem="Um7-OA-wsw" firstAttribute="top" secondItem="jAC-jB-EBl" secondAttribute="top" constant="80" id="dZn-5o-fhs"/>
+                                </constraints>
                             </view>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="CpD-s1-arK">
                                 <rect key="frame" x="123.5" y="72" width="167" height="32"/>
@@ -153,11 +172,13 @@
                     <connections>
                         <outlet property="detailPane" destination="jAC-jB-EBl" id="FkN-oc-Xgi"/>
                         <outlet property="evolutionPane" destination="GKW-9o-7Zg" id="2Rs-UA-v1H"/>
+                        <outlet property="imageFavorited" destination="Xsz-lp-y4Z" id="1Uu-Ud-PQP"/>
+                        <outlet property="imageMain" destination="Um7-OA-wsw" id="1ax-4t-787"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gnv-c5-HYf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2978" y="381"/>
+            <point key="canvasLocation" x="2976.811594202899" y="380.35714285714283"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="PGP-tX-tqZ">
@@ -340,6 +361,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="heart" catalog="system" width="64" height="54"/>
         <image name="heart.fill" catalog="system" width="64" height="54"/>
         <image name="logo" width="64" height="64"/>
     </resources>

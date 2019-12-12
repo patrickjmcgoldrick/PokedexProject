@@ -10,16 +10,13 @@ import UIKit
 
 class DetailViewController: UIViewController, UISearchBarDelegate {
 
-    @IBOutlet weak var imageMain: UIImageView!
+    @IBOutlet public weak var imageMain: UIImageView!
     
-    @IBOutlet weak var imageFavorited: UIImageView!
+    @IBOutlet public weak var imageFavorited: UIImageView!
     
+    @IBOutlet public weak var detailPane: UIView!
     
-    
-    
-    @IBOutlet weak var detailPane: UIView!
-    
-    @IBOutlet weak var evolutionPane: UIView!
+    @IBOutlet public weak var evolutionPane: UIView!
     
     var pokemon: Pokemon?
     var favorites = [Favorite]()

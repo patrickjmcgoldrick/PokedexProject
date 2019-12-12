@@ -19,13 +19,13 @@ class PokedexProjectTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    func testPokemenParser() {
+    func testPokemenListParser() {
         // need this to keep testing alive until
         // the background process finishes
-        let expectation = self.expectation(description: "Testing Pokemon Parser")
+        let expectation = self.expectation(description: "Testing Pokemon List Parser")
 
         let testBundle = Bundle(for: type(of: self))
-        let filename = "pokemen"
+        let filename = "pokemenList"
 
         let path = testBundle.path(forResource: filename, ofType: "json")
         XCTAssertNotNil(path, "\(filename) file not found")
@@ -40,10 +40,45 @@ class PokedexProjectTests: XCTestCase {
 
             XCTAssertNotNil(data, "Data came back nil")
 
-            let parser = PokemenParser()
+            let parser = PokemenListParser()
             parser.parse(data: data) { (pokemenHeader) in
 
                 XCTAssertTrue(pokemenHeader.count == K.TestCase.expectedPokemenCount)
+
+                expectation.fulfill()
+            }
+        } catch {
+            assertionFailure("Error: " + error.localizedDescription)
+        }
+        // 15 second wait for timeout
+        waitForExpectations(timeout: 15, handler: nil)
+    }
+
+    func testPokemonParser() {
+        // need this to keep testing alive until
+        // the background process finishes
+        let expectation = self.expectation(description: "Testing Pokemon Parser")
+
+        let testBundle = Bundle(for: type(of: self))
+        let filename = "pokemon_1"
+
+        let path = testBundle.path(forResource: filename, ofType: "json")
+        XCTAssertNotNil(path, "\(filename) file not found")
+
+        guard let cleanPath = path else { return }
+
+        // convert into URL
+        let url = NSURL.fileURL(withPath: cleanPath)
+        do {
+            // load json into Data object
+            let data = try Data(contentsOf: url)
+
+            XCTAssertNotNil(data, "Data came back nil")
+
+            let parser = PokemonParser()
+            parser.parse(data: data) { (pokemonData) in
+
+                //XCTAssertTrue(pokemonData == K.TestCase.expectedPokemenCount)
 
                 expectation.fulfill()
             }

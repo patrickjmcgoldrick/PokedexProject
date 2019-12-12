@@ -42,7 +42,7 @@ class ListViewController: UIViewController, UIGestureRecognizerDelegate {
         NetworkController().loadPokemonData(urlString: url) { (data) in
             print(data.description)
             
-            let parser = PokemenParser()
+            let parser = PokemenListParser()
             parser.parse(data: data) { (pokemenHeader) in
                 
                 if let results = pokemenHeader.results {

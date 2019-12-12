@@ -85,6 +85,8 @@ identifier_name:
     - front_default
     - evolves_to
     - evolution_chain
+    - base_experience
+    - base_stat
 number_separator:
   minimum_length: 5
 file_name:

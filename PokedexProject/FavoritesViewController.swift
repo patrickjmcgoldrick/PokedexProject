@@ -10,7 +10,7 @@ import UIKit
 
 class FavoritesViewController: UIViewController {
 
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet private weak var tableView: UITableView!
     
     var pokemonIds: [Int16]?
     var pokemen = [Pokemon]()
@@ -33,13 +33,13 @@ class FavoritesViewController: UIViewController {
         pokemonIds = favorites.map { (favorite) -> Int16 in
             return favorite.pokemonId
         }
-        print (pokemonIds)
+        print(pokemonIds)
         
         // read matching Pokemen from Database
         guard let ids = pokemonIds else { return }
         pokemen = CoreDataFetchOps.shared.getPokemenByIds(ids: ids)
         
-        print (pokemen.count)
+        print(pokemen.count)
         tableView.reloadData()
     }
 }
@@ -55,7 +55,7 @@ extension FavoritesViewController: UITableViewDataSource {
         let cell = UITableViewCell()
         
         cell.textLabel?.text = pokemen[indexPath.row].name
-        print (pokemen[indexPath.row].name)
+        print(pokemen[indexPath.row].name)
         
         return cell
     }

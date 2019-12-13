@@ -138,16 +138,6 @@
                                     <constraint firstItem="Um7-OA-wsw" firstAttribute="top" secondItem="jAC-jB-EBl" secondAttribute="top" constant="80" id="dZn-5o-fhs"/>
                                 </constraints>
                             </view>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="CpD-s1-arK">
-                                <rect key="frame" x="123.5" y="72" width="167" height="32"/>
-                                <segments>
-                                    <segment title="Details"/>
-                                    <segment title="Evolutions"/>
-                                </segments>
-                                <connections>
-                                    <action selector="segmentControl:" destination="VLj-Ao-BAg" eventType="valueChanged" id="EHO-WR-Ja2"/>
-                                </connections>
-                            </segmentedControl>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GKW-9o-7Zg">
                                 <rect key="frame" x="0.0" y="56" width="414" height="703"/>
                                 <subviews>
@@ -166,14 +156,24 @@
                                 <color key="backgroundColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="iJ7-id-WgC" firstAttribute="leading" secondItem="GKW-9o-7Zg" secondAttribute="leadingMargin" constant="20" id="628-JP-Nv8"/>
+                                    <constraint firstItem="sVg-oh-Qhs" firstAttribute="trailing" secondItem="GKW-9o-7Zg" secondAttribute="trailingMargin" id="9D9-II-0TK"/>
                                     <constraint firstItem="iJ7-id-WgC" firstAttribute="top" secondItem="GKW-9o-7Zg" secondAttribute="topMargin" constant="16" id="AtF-iY-VSj"/>
-                                    <constraint firstAttribute="trailing" secondItem="sVg-oh-Qhs" secondAttribute="trailing" id="E8k-Ke-kzz"/>
-                                    <constraint firstItem="sVg-oh-Qhs" firstAttribute="top" secondItem="iJ7-id-WgC" secondAttribute="bottom" constant="8" id="cgR-EZ-5XQ"/>
+                                    <constraint firstItem="sVg-oh-Qhs" firstAttribute="leading" secondItem="GKW-9o-7Zg" secondAttribute="leadingMargin" id="YK5-ud-AxN"/>
                                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="iJ7-id-WgC" secondAttribute="trailing" constant="20" symbolic="YES" id="hkC-va-mK9"/>
-                                    <constraint firstItem="sVg-oh-Qhs" firstAttribute="leading" secondItem="GKW-9o-7Zg" secondAttribute="leading" id="o0V-b2-l1X"/>
-                                    <constraint firstAttribute="bottom" secondItem="sVg-oh-Qhs" secondAttribute="bottom" id="opu-ul-DLL"/>
+                                    <constraint firstItem="sVg-oh-Qhs" firstAttribute="top" secondItem="iJ7-id-WgC" secondAttribute="bottom" constant="16" id="q0B-DZ-YFI"/>
+                                    <constraint firstItem="sVg-oh-Qhs" firstAttribute="bottom" secondItem="GKW-9o-7Zg" secondAttribute="bottomMargin" id="wil-SI-Ok4"/>
                                 </constraints>
                             </view>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="CpD-s1-arK">
+                                <rect key="frame" x="123.5" y="72" width="167" height="32"/>
+                                <segments>
+                                    <segment title="Details"/>
+                                    <segment title="Evolutions"/>
+                                </segments>
+                                <connections>
+                                    <action selector="segmentControl:" destination="VLj-Ao-BAg" eventType="valueChanged" id="EHO-WR-Ja2"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -196,11 +196,12 @@
                         <outlet property="evolutionPane" destination="GKW-9o-7Zg" id="2Rs-UA-v1H"/>
                         <outlet property="imageFavorited" destination="Xsz-lp-y4Z" id="1Uu-Ud-PQP"/>
                         <outlet property="imageMain" destination="Um7-OA-wsw" id="1ax-4t-787"/>
+                        <outlet property="scrollEvolutions" destination="sVg-oh-Qhs" id="fv0-lU-7KU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gnv-c5-HYf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3119" y="471"/>
+            <point key="canvasLocation" x="3118.840579710145" y="470.75892857142856"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="PGP-tX-tqZ">

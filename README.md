@@ -8,7 +8,7 @@
 
 + Perform local login
 
-• Implement a Segment control in the details view, where 1 tab should show pokemon information, the 2nd tab should talk show pokemon evolution forms.
++ Implement a Segment control in the details view, where 1 tab should show pokemon information, the 2nd tab should talk show pokemon evolution forms.
 
 + Implement a tab bar to toggle between search page and favorites page.
 

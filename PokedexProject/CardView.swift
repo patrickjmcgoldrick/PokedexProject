@@ -15,7 +15,7 @@ class CardView: UIView {
     @IBOutlet weak var imageView: UIImageView!
     
     @IBOutlet weak var lblName: UILabel!
-    
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         commonInit()
@@ -33,5 +33,4 @@ class CardView: UIView {
         contentView.frame = bounds
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
     }
-
 }

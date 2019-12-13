@@ -31,6 +31,8 @@ struct K {
     
     struct Image {
         
-        static let defaultImage = "defaultPokemon"
+        static let defaultPokemonImage = "defaultPokemon"
+        
+        static let defaultUserImage = "surf-board"
     }
 }

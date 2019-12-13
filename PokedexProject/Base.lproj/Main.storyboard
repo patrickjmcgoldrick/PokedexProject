@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="VLj-Ao-BAg">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="gHQ-DX-5VZ">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
@@ -236,6 +236,7 @@
                     <connections>
                         <segue destination="BtT-Nf-IWO" kind="relationship" relationship="viewControllers" id="Gky-uX-5oh"/>
                         <segue destination="x9z-0j-wUQ" kind="relationship" relationship="viewControllers" id="22a-w4-JeG"/>
+                        <segue destination="Gpe-Bu-VeK" kind="relationship" relationship="viewControllers" id="B7b-bW-aoS"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BlE-gJ-H3o" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -382,11 +383,90 @@
             </objects>
             <point key="canvasLocation" x="1047.8260869565217" y="897.99107142857133"/>
         </scene>
+        <!--Settings-->
+        <scene sceneID="Grm-Og-xur">
+            <objects>
+                <viewController id="iwc-jF-QD0" customClass="SettingsViewController" customModule="PokedexProject" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="lVS-yD-RjC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="surf-board" translatesAutoresizingMaskIntoConstraints="NO" id="qsF-XK-ShE">
+                                <rect key="frame" x="63" y="80" width="288" height="288"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="288" id="Qz3-aB-ckw"/>
+                                    <constraint firstAttribute="width" secondItem="qsF-XK-ShE" secondAttribute="height" multiplier="1:1" id="evH-tL-tqz"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jkh-wo-o9N">
+                                <rect key="frame" x="63" y="80" width="288" height="288"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="288" id="IhD-Js-PPO"/>
+                                    <constraint firstAttribute="width" secondItem="Jkh-wo-o9N" secondAttribute="height" multiplier="1:1" id="voX-GK-Zko"/>
+                                </constraints>
+                                <connections>
+                                    <action selector="btnActionPickImage:" destination="iwc-jF-QD0" eventType="touchUpInside" id="k7R-fx-crL"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zwi-UO-h1E">
+                                <rect key="frame" x="184" y="408" width="46" height="33"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                <state key="normal" title="Reset">
+                                    <color key="titleColor" red="1" green="0.83749121429999995" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="btnReset:" destination="iwc-jF-QD0" eventType="touchUpInside" id="SPS-Z1-hgV"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="Jkh-wo-o9N" firstAttribute="top" secondItem="HbH-s3-tLN" secondAttribute="top" constant="24" id="Ez3-fK-lVf"/>
+                            <constraint firstItem="qsF-XK-ShE" firstAttribute="top" secondItem="HbH-s3-tLN" secondAttribute="top" constant="24" id="eDC-uR-u3o"/>
+                            <constraint firstItem="Zwi-UO-h1E" firstAttribute="centerX" secondItem="lVS-yD-RjC" secondAttribute="centerX" id="ibM-hG-DOo"/>
+                            <constraint firstItem="qsF-XK-ShE" firstAttribute="centerX" secondItem="lVS-yD-RjC" secondAttribute="centerX" id="q8V-Xq-xmr"/>
+                            <constraint firstItem="Zwi-UO-h1E" firstAttribute="top" secondItem="Jkh-wo-o9N" secondAttribute="bottom" constant="40" id="tOB-4P-mZn"/>
+                            <constraint firstItem="Jkh-wo-o9N" firstAttribute="centerX" secondItem="lVS-yD-RjC" secondAttribute="centerX" id="wDx-Ki-BtW"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="HbH-s3-tLN"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" id="cn4-Wf-ZhO"/>
+                    <navigationItem key="navigationItem" title="Settings" id="owu-b8-G4n"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="imageView" destination="qsF-XK-ShE" id="DBh-QU-5PX"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ewF-Ck-1Bg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1958" y="1708"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="jok-F4-KZT">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Gpe-Bu-VeK" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" selectedImage="person.fill" catalog="system" systemItem="contacts" id="q4M-Zw-NJf"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="H1l-xn-Dbi">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="iwc-jF-QD0" kind="relationship" relationship="rootViewController" id="mma-nn-oS4"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="n2m-Tj-oR5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1048" y="1708"/>
+        </scene>
     </scenes>
     <resources>
         <image name="heart" catalog="system" width="64" height="54"/>
         <image name="heart.fill" catalog="system" width="64" height="54"/>
         <image name="logo" width="64" height="64"/>
+        <image name="person.fill" catalog="system" width="64" height="60"/>
+        <image name="surf-board" width="256" height="256"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="1rK-ZU-iEG"/>

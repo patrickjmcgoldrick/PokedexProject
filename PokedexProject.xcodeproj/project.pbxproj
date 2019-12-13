@@ -14,6 +14,8 @@
 		5E38E11923A20B31002A6F18 /* PokemonListData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E38E11823A20B31002A6F18 /* PokemonListData.swift */; };
 		5E38E11C23A21FA4002A6F18 /* CardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5E38E11B23A21FA4002A6F18 /* CardView.xib */; };
 		5E38E11E23A2246C002A6F18 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E38E11D23A2246C002A6F18 /* CardView.swift */; };
+		5E38E19C23A36D0E002A6F18 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E38E19B23A36D0E002A6F18 /* SettingsViewController.swift */; };
+		5E38E19E23A37DC6002A6F18 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E38E19D23A37DC6002A6F18 /* ImagePicker.swift */; };
 		5E43767C23A07FFE003E0012 /* evolution-chain_2.json in Resources */ = {isa = PBXBuildFile; fileRef = 5E43767B23A07FFE003E0012 /* evolution-chain_2.json */; };
 		5E43768023A09649003E0012 /* pokemon-species_413.json in Resources */ = {isa = PBXBuildFile; fileRef = 5E43767F23A09649003E0012 /* pokemon-species_413.json */; };
 		5E43768223A097E7003E0012 /* SpeciesParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E43768123A097E7003E0012 /* SpeciesParser.swift */; };
@@ -73,6 +75,8 @@
 		5E38E11823A20B31002A6F18 /* PokemonListData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonListData.swift; sourceTree = "<group>"; };
 		5E38E11B23A21FA4002A6F18 /* CardView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardView.xib; sourceTree = SOURCE_ROOT; };
 		5E38E11D23A2246C002A6F18 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		5E38E19B23A36D0E002A6F18 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = SOURCE_ROOT; };
+		5E38E19D23A37DC6002A6F18 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		5E43767B23A07FFE003E0012 /* evolution-chain_2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = "evolution-chain_2.json"; path = "testData/evolution-chain_2.json"; sourceTree = SOURCE_ROOT; };
 		5E43767F23A09649003E0012 /* pokemon-species_413.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = "pokemon-species_413.json"; path = "testData/pokemon-species_413.json"; sourceTree = SOURCE_ROOT; };
 		5E43768123A097E7003E0012 /* SpeciesParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeciesParser.swift; sourceTree = "<group>"; };
@@ -190,6 +194,7 @@
 		5E9E62B4239ADF33001C55BF /* PokedexProject */ = {
 			isa = PBXGroup;
 			children = (
+				5E38E19B23A36D0E002A6F18 /* SettingsViewController.swift */,
 				5E38E11B23A21FA4002A6F18 /* CardView.xib */,
 				5E38E11D23A2246C002A6F18 /* CardView.swift */,
 				5E38E11A23A20F35002A6F18 /* Parsing */,
@@ -209,6 +214,7 @@
 				5E9E62C3239ADF35001C55BF /* LaunchScreen.storyboard */,
 				5E9E62BB239ADF33001C55BF /* Main.storyboard */,
 				5E9E62C6239ADF35001C55BF /* Info.plist */,
+				5E38E19D23A37DC6002A6F18 /* ImagePicker.swift */,
 				5E9E62BE239ADF33001C55BF /* PokedexProject.xcdatamodeld */,
 			);
 			path = PokedexProject;
@@ -418,9 +424,11 @@
 				5E7CB2D6239DE9AD003E082E /* CoreDataDeleteOps.swift in Sources */,
 				5EAD0CFC239E90E0005B6EF4 /* FavoritesViewController.swift in Sources */,
 				5E43768423A09A69003E0012 /* SpeciesData.swift in Sources */,
+				5E38E19C23A36D0E002A6F18 /* SettingsViewController.swift in Sources */,
 				5E9E62C0239ADF33001C55BF /* PokedexProject.xcdatamodeld in Sources */,
 				5E9E6373239B6FA2001C55BF /* PokemenListParser.swift in Sources */,
 				5E9E62B8239ADF33001C55BF /* SceneDelegate.swift in Sources */,
+				5E38E19E23A37DC6002A6F18 /* ImagePicker.swift in Sources */,
 				5E7CB2C9239CCD10003E082E /* ListViewCell.swift in Sources */,
 				5E7CB2D4239DE99F003E082E /* CoreDataFetchOps.swift in Sources */,
 			);

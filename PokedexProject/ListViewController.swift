@@ -20,7 +20,7 @@ class ListViewController: UIViewController, UIGestureRecognizerDelegate {
     var pokemen = [Pokemon]()
     var favorites = [Favorite]()
     var gEmail = "x@y.com"
-    var defaultImage = UIImage(named: K.Image.defaultImage)
+    var defaultImage = UIImage(named: K.Image.defaultPokemonImage)
     
     override func viewDidLoad() {
         super.viewDidLoad()

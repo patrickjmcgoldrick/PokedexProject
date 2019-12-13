@@ -55,7 +55,7 @@ class DetailViewController: UIViewController, UISearchBarDelegate {
 
         var card = CardView()
     //slide.translatesAutoresizingMaskIntoConstraints = false
-        var image = UIImage(named: K.Image.defaultImage)
+        var image = UIImage(named: K.Image.defaultPokemonImage)
         card.imageView.image = image
         card.lblName.text = "Patrick"
         cards.append(card)

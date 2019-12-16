@@ -18,9 +18,20 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let user = UserModel()
+        
+        createDefaultUsers()
+    }
+    
+    private func createDefaultUsers() {
+        
+        var user = UserModel()
         user.email = "x@y.com"
         user.password = "jjj"
+        CoreDataSaveOps.shared.saveUser(userObject: user)
+
+        user = UserModel()
+        user.email = "vishwas513@gmail.com"
+        user.password = "513"
         CoreDataSaveOps.shared.saveUser(userObject: user)
     }
     

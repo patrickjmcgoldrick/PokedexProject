@@ -15,8 +15,3 @@ struct Evolution: Codable {
     var evolves_to: [Evolution]
     var species: Species
 }
-
-struct Species: Codable {
-    var name: String
-    var url: String
-}

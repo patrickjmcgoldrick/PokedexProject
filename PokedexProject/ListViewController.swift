@@ -27,7 +27,7 @@ class ListViewController: UIViewController, UIGestureRecognizerDelegate {
                 
         // if we have not already loaded all the pokemen, then get to it.
         if UserDefaults.standard.bool(forKey: K.Key.allPokemenLoadedKey) != true {
-            loadPokemon(urlString: K.ServiceURL.getPokemenInitial)
+            loadPokemon(urlString: K.ServiceURL.getPokemenList)
         } else {
             // load from CoreData
             print("Load data from CoreData")
@@ -48,7 +48,7 @@ class ListViewController: UIViewController, UIGestureRecognizerDelegate {
     
     private func loadPokemon(urlString: String) {
        
-        NetworkController().loadPokemonData(urlString: urlString) { (data) in
+        NetworkController().loadData(urlString: urlString) { (data) in
             print(data.description)
             
             let parser = PokemenListParser()
@@ -122,6 +122,7 @@ class ListViewController: UIViewController, UIGestureRecognizerDelegate {
     }
 }
 
+// MARK: Collection View Data Source
 extension ListViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -179,6 +180,7 @@ extension ListViewController: UICollectionViewDataSource {
     }
 }
 
+// MARK: Collection View Delegate
 extension ListViewController: UICollectionViewDelegate {
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -187,6 +189,7 @@ extension ListViewController: UICollectionViewDelegate {
     }
 }
 
+// MARK: Search Bar Delegate
 extension ListViewController: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
@@ -202,6 +205,11 @@ extension ListViewController: UISearchBarDelegate {
         }
 
         collectionView.reloadData()
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        
+        searchBar.endEditing(true)
     }
     
 }

@@ -12,7 +12,7 @@ struct PokemonData: Codable {
     var abilities: [Abilities]
     var base_experience: Int
     var stats: [Stats]
-    var types: [Types]
+    var species: Species
     var height: Int
     var weight: Int
 }
@@ -35,9 +35,9 @@ struct Stat: Codable {
     var name: String
 }
 
-struct Types: Codable {
-    var slot: Int
-    var type: Type
+struct Species: Codable {
+    var name: String
+    var url: String
 }
 
 struct Type: Codable {

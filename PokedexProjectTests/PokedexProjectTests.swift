@@ -79,6 +79,7 @@ class PokedexProjectTests: XCTestCase {
             parser.parse(data: data) { (pokemonData) in
                 XCTAssertTrue(pokemonData.abilities[0].ability.name == "chlorophyll")
 
+                print(pokemonData.species.url)
                 expectation.fulfill()
             }
         } catch {
@@ -147,14 +148,13 @@ class PokedexProjectTests: XCTestCase {
             let parser = EvolutionParser()
             parser.parse(data: data) { (evolutionChain) in
 
-                
-                print(evolutionChain.chain.species)
-                XCTAssertTrue(evolutionChain.chain.species.name == "charmander")
+//                print(evolutionChain.chain.species)
+//                XCTAssertTrue(evolutionChain.chain.species.name == "charmander")
 
                 var step = evolutionChain.chain.evolves_to
                 
                 while step.count > 0 {
-                    print(step[0].species)
+                    //print(step[0].species)
                     step = step[0].evolves_to
                 }
                 
@@ -175,7 +175,6 @@ class PokedexProjectTests: XCTestCase {
 
         let testBundle = Bundle(for: type(of: self))
         let filename = "pokemon-species_413"
-        //let filename = "familtyTree"
 
         let path = testBundle.path(forResource: filename, ofType: "json")
         XCTAssertNotNil(path, "\(filename) file not found")

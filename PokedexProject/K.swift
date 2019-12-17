@@ -12,9 +12,15 @@ struct K {
     
     struct ServiceURL {
 
-        static let getPokemenInitial = "https://pokeapi.co/api/v2/pokemon?offset=0&limit=100"
+        static let getPokemenList = "https://pokeapi.co/api/v2/pokemon?offset=0&limit=100"
+        
+        static let getPokemon = "https://pokeapi.co/api/v2/pokemon/"
         
         static let getPokemonForm = "https://pokeapi.co/api/v2/pokemon-form/"
+        
+        static let getPokemonSpecies = "https://pokeapi.co/api/v2/pokemon-species/"
+        
+        static let getEvolutionChain = "https://pokeapi.co/api/v2/evolution-chain/"
     }
     
     struct Segue {

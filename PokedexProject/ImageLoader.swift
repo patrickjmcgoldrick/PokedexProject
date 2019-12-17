@@ -6,7 +6,7 @@
 //  Copyright © 2019 dirtbag. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 class ImageLoader {
     
@@ -19,18 +19,29 @@ class ImageLoader {
         let url = "\(K.ServiceURL.getPokemonForm)\(id)"
         
         let network = NetworkController()
-        network.loadPokemonData(urlString: url) { (data) in
+        network.loadData(urlString: url) { (data) in
             
             let parser = PokemonFormParser()
             parser.parse(data: data) { (formData) in
                 self.imageURL = formData.sprites?.front_default
                 if let imageURL = self.imageURL {
                     
-                    network.loadPokemonData(urlString: imageURL) { (data) in
+                    network.loadData(urlString: imageURL) { (data) in
                         
                         imageLoaded(imageURL, data)
                     }
                 }
+            }
+        }
+    }
+    
+    func loadImageIntoView(imageURL: String, imageView: UIImageView) {
+        
+        NetworkController().loadData(urlString: imageURL) { (data) in
+            
+            DispatchQueue.main.async {
+                let image = UIImage(data: data)
+                imageView.image = image
             }
         }
     }

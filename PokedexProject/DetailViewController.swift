@@ -22,6 +22,8 @@ class DetailViewController: UIViewController, UISearchBarDelegate {
     
     var pokemon: Pokemon?
     var favorites = [Favorite]()
+    var evolutionPokemen = [Pokemon]()
+    var network = NetworkController()
     
     var cards = [CardView]()
     
@@ -31,11 +33,7 @@ class DetailViewController: UIViewController, UISearchBarDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        createSlide()
-        createSlide()
-        createSlide()
-        
+                
         setupScrollView()
         
         favorites = CoreDataFetchOps.shared.getFavoritesBy(email: gEmail)
@@ -48,16 +46,17 @@ class DetailViewController: UIViewController, UISearchBarDelegate {
                 imageFavorited.isHighlighted = true
             }
             print(pokemon.imageURL)
+            
+            loadDetails()
         }
     }
     
-    private func createSlide() {
+    private func createSlide(name: String, imageURL: String) {
 
         let card = CardView()
-    //slide.translatesAutoresizingMaskIntoConstraints = false
-        let image = UIImage(named: K.Image.defaultPokemonImage)
-        card.imageView.image = image
-        card.lblName.text = "Patrick"
+        //let image = UIImage(named: K.Image.defaultPokemonImage)
+        ImageLoader().loadImageIntoView(imageURL: imageURL, imageView: card.imageView)
+        card.lblName.text = name
         cards.append(card)
     }
     
@@ -99,5 +98,83 @@ class DetailViewController: UIViewController, UISearchBarDelegate {
         }
         return false
     }
+    
+    private func loadDetails() {
+        
+        guard let id = pokemon?.id else { return }
+        
+        let urlString = K.ServiceURL.getPokemon + String(id)
 
+        network.loadData(urlString: urlString) { (data) in
+             
+             let parser = PokemonParser()
+             parser.parse(data: data) { (pokemonData) in
+                 
+                let speciesURL = pokemonData.species.url
+                    
+                self.loadSpecies(urlString: speciesURL)
+                
+            }
+         }
+    }
+    
+    private func loadSpecies(urlString: String) {
+        
+        network.loadData(urlString: urlString) { (data) in
+                        
+            let parser = SpeciesParser()
+            parser.parse(data: data) { (speciesData) in
+                
+                if let evolutionURL = speciesData.evolution_chain?.url {
+                    self.loadEvolutions(urlString: evolutionURL)
+                } else {
+                    print("FAILED TO GET HERE!")
+                }
+            }
+        }
+    }
+    
+    private func loadEvolutions(urlString: String) {
+        
+        network.loadData(urlString: urlString) { (data) in
+            let parser = EvolutionParser()
+            parser.parse(data: data) { (evolutionData) in
+                
+                var evolutions = [Species]()
+                evolutions.append(evolutionData.chain.species)
+                var step = evolutionData.chain.evolves_to
+                
+                while step.count > 0 {
+                    evolutions.append(step[0].species)
+                    step = step[0].evolves_to
+                }
+                
+                var ids = [Int16]()
+                for record in evolutions {
+                    ids.append(self.getIdFromUrl(urlString: record.url))
+                }
+                
+                print ("ids: \(ids)")
+                self.evolutionPokemen = CoreDataFetchOps.shared.getPokemenByIds(ids: ids)
+                
+                DispatchQueue.main.async {
+                    for pokemon in self.evolutionPokemen {
+                        guard let name = pokemon.name else { continue }
+                        guard let imageURL = pokemon.imageURL else { continue }
+                        print(name)
+                        print("image at: \(imageURL)")
+                        self.createSlide(name: name, imageURL: imageURL)
+                        self.setupScrollView()
+                    }
+                }
+            
+            }
+        }
+    }
+    
+    private func getIdFromUrl(urlString: String) -> Int16 {
+        
+        let elements = urlString.split(separator: "/")
+        return Int16(String(elements[elements.count - 1])) ?? 0
+    }
 }

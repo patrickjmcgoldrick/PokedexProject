@@ -14,6 +14,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        // set default settings
+        UserDefaults.standard.register(defaults: [
+            K.Key.allPokemenLoadedKey: K.Setting.allPokemenLoadedDefault
+        ])
         return true
     }
 

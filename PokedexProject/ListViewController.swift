@@ -24,9 +24,19 @@ class ListViewController: UIViewController, UIGestureRecognizerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+                
+        // if we have not already loaded all the pokemen, then get to it.
+        if UserDefaults.standard.bool(forKey: K.Key.allPokemenLoadedKey) != true {
+            loadPokemon(urlString: K.ServiceURL.getPokemenInitial)
+        } else {
+            // load from CoreData
+            print("Load data from CoreData")
+            self.pokemen = CoreDataFetchOps.shared.getAllPokemen()
+            self.allLoadedSoFar = self.pokemen
+            collectionView.reloadData()
+        }
         
-        loadPokemon(offset: 0)
-        //CoreDataDeleteOps.shared.deleteAllPokemen()
+        // setup delegates
         searchBar.delegate = self
         collectionView.dataSource = self
         collectionView.delegate = self
@@ -36,10 +46,9 @@ class ListViewController: UIViewController, UIGestureRecognizerDelegate {
         favorites = CoreDataFetchOps.shared.getFavoritesBy(email: gEmail)
     }
     
-    private func loadPokemon(offset: Int) {
+    private func loadPokemon(urlString: String) {
        
-        let url = "\(K.ServiceURL.getPokemen)?offset=\(offset)&limit=100"
-        NetworkController().loadPokemonData(urlString: url) { (data) in
+        NetworkController().loadPokemonData(urlString: urlString) { (data) in
             print(data.description)
             
             let parser = PokemenListParser()
@@ -54,6 +63,14 @@ class ListViewController: UIViewController, UIGestureRecognizerDelegate {
                     
                     DispatchQueue.main.async {
                         self.collectionView.reloadData()
+                    }
+                    
+                    // if not nil, load nextset of data
+                    if let nextURL = pokemenHeader.next {
+                        print("next: \(nextURL)")
+                        self.loadPokemon(urlString: nextURL)
+                    } else {
+                        UserDefaults.standard.set(true, forKey: K.Key.allPokemenLoadedKey)
                     }
                 }
             }

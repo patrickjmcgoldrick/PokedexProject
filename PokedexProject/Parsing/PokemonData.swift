@@ -23,6 +23,7 @@ struct Abilities: Codable {
 
 struct Ability: Codable {
     var name: String
+    var url: String
 }
 
 struct Stats: Codable {

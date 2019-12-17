@@ -17,7 +17,7 @@ class CoreDataManager {
     // MARK: - Setup Core Data stack
 
     var mainContext: NSManagedObjectContext {
-        let viewContext =  persistentContainer.viewContext
+        let viewContext = persistentContainer.viewContext
         //viewContext.mergePolicy = NSMergeByPropertyStoreTrumpMergePolicy
         return viewContext
     }

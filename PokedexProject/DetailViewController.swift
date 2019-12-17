@@ -20,7 +20,6 @@ class DetailViewController: UIViewController, UISearchBarDelegate {
     
     @IBOutlet weak var scrollEvolutions: UIScrollView!
     
-    
     var pokemon: Pokemon?
     var favorites = [Favorite]()
     
@@ -28,9 +27,10 @@ class DetailViewController: UIViewController, UISearchBarDelegate {
     
     var gEmail = "x@y.com"
 
+    var cardSize = CGFloat(300.0)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
 
         createSlide()
         createSlide()
@@ -53,9 +53,9 @@ class DetailViewController: UIViewController, UISearchBarDelegate {
     
     private func createSlide() {
 
-        var card = CardView()
+        let card = CardView()
     //slide.translatesAutoresizingMaskIntoConstraints = false
-        var image = UIImage(named: K.Image.defaultPokemonImage)
+        let image = UIImage(named: K.Image.defaultPokemonImage)
         card.imageView.image = image
         card.lblName.text = "Patrick"
         cards.append(card)
@@ -63,17 +63,17 @@ class DetailViewController: UIViewController, UISearchBarDelegate {
     
     private func setupScrollView() {
         //scrollEvolutions.frame = CGRect(x: 0, y: 0, width: scrollEvolutions.frame.width, height: scrollEvolutions.frame.height)
-        scrollEvolutions.contentSize = CGSize(width: 150.0 * CGFloat(cards.count), height: scrollEvolutions.frame.height)
+        scrollEvolutions.contentSize = CGSize(width: cardSize * CGFloat(cards.count), height: scrollEvolutions.frame.height)
         //scrollEvolutions.isPagingEnabled = true
 
         // calculate x position to center image
         //let xPosition = (view.frame.width - scrollView.frame.width) / 2
 
         for index in 0..<cards.count {
-            cards[index].frame = CGRect(x: 150.0 * CGFloat(index),
+            cards[index].frame = CGRect(x: cardSize * CGFloat(index),
                                          y: 0,
-                                         width: 150.0,
-                                         height: 150.0)
+                                         width: cardSize,
+                                         height: cardSize)
             scrollEvolutions.addSubview(cards[index])
         }
     }

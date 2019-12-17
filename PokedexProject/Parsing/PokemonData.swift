@@ -9,6 +9,7 @@
 import Foundation
 
 struct PokemonData: Codable {
+    var id: Int
     var abilities: [Abilities]
     var base_experience: Int
     var stats: [Stats]

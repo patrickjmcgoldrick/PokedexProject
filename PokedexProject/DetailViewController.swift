@@ -14,6 +14,18 @@ class DetailViewController: UIViewController, UISearchBarDelegate {
     
     @IBOutlet public weak var imageFavorited: UIImageView!
     
+    @IBOutlet weak var lblFavoriteText: UILabel!
+    
+    @IBOutlet weak var statId: StatView!
+    
+    @IBOutlet weak var statBaseExp: StatView!
+    
+    
+    @IBOutlet weak var statHeight: StatView!
+    
+    
+    @IBOutlet weak var statWeight: StatView!
+    
     @IBOutlet public weak var detailPane: UIView!
     
     @IBOutlet public weak var evolutionPane: UIView!
@@ -99,6 +111,7 @@ class DetailViewController: UIViewController, UISearchBarDelegate {
         return false
     }
     
+    // MARK: Break Down Pokemon Service Data
     private func loadDetails() {
         
         guard let id = pokemon?.id else { return }
@@ -107,17 +120,32 @@ class DetailViewController: UIViewController, UISearchBarDelegate {
 
         network.loadData(urlString: urlString) { (data) in
              
-             let parser = PokemonParser()
-             parser.parse(data: data) { (pokemonData) in
-                 
-                let speciesURL = pokemonData.species.url
-                    
-                self.loadSpecies(urlString: speciesURL)
+            let parser = PokemonParser()
+            parser.parse(data: data) { (pokemonData) in
+
+                self.setStatistics(pokemonData: pokemonData)
                 
-             }
+                let speciesURL = pokemonData.species.url
+                self.loadSpecies(urlString: speciesURL)
+
+            }
         }
     }
     
+    func setStatistics(pokemonData: PokemonData) {
+        DispatchQueue.main.async {
+            self.statId.lblName.text = "id:"
+            self.statId.lblValue.text = String(pokemonData.id)
+            self.statBaseExp.lblName.text = "Base Exp:"
+            self.statBaseExp.lblValue.text = String(pokemonData.base_experience)
+            self.statWeight.lblName.text = "Width:"
+            self.statWeight.lblValue.text = String(pokemonData.weight)
+            self.statHeight.lblName.text = "Height:"
+            self.statHeight.lblValue.text = String(pokemonData.height)
+        }
+    }
+    
+    // MARK: Break Down Species Service Data
     private func loadSpecies(urlString: String) {
         
         network.loadData(urlString: urlString) { (data) in
@@ -126,14 +154,28 @@ class DetailViewController: UIViewController, UISearchBarDelegate {
             parser.parse(data: data) { (speciesData) in
                 
                 if let evolutionURL = speciesData.evolution_chain?.url {
+                   
+                    DispatchQueue.main.async {
+                        self.lblFavoriteText.text = self.getFavoriteText_en(favorites: speciesData.flavor_text_entries)
+                    }
                     self.loadEvolutions(urlString: evolutionURL)
-                } else {
-                    print("FAILED TO GET HERE!")
                 }
             }
         }
     }
     
+    /// pick out Favorite text in english
+    private func getFavoriteText_en(favorites: [FlavorText]) -> String {
+        
+        for favorite in favorites {
+            if favorite.language.name == "en" {
+                return favorite.flavor_text
+            }
+        }
+        return ""
+    }
+    
+    // MARK: Break Down Evolution Service Data
     private func loadEvolutions(urlString: String) {
         
         network.loadData(urlString: urlString) { (data) in

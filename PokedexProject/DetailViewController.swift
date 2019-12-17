@@ -70,9 +70,9 @@ class DetailViewController: UIViewController, UISearchBarDelegate {
 
         for index in 0..<cards.count {
             cards[index].frame = CGRect(x: cardSize * CGFloat(index),
-                                         y: 0,
-                                         width: cardSize,
-                                         height: cardSize)
+                                        y: 0,
+                                        width: cardSize,
+                                        height: cardSize)
             scrollEvolutions.addSubview(cards[index])
         }
     }
@@ -114,8 +114,8 @@ class DetailViewController: UIViewController, UISearchBarDelegate {
                     
                 self.loadSpecies(urlString: speciesURL)
                 
-            }
-         }
+             }
+        }
     }
     
     private func loadSpecies(urlString: String) {
@@ -154,7 +154,6 @@ class DetailViewController: UIViewController, UISearchBarDelegate {
                     ids.append(self.getIdFromUrl(urlString: record.url))
                 }
                 
-                print ("ids: \(ids)")
                 self.evolutionPokemen = CoreDataFetchOps.shared.getPokemenByIds(ids: ids)
                 
                 DispatchQueue.main.async {

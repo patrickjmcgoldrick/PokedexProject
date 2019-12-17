@@ -11,7 +11,7 @@ import UIKit
 class SettingsViewController: UIViewController {
 
     @IBOutlet weak var imageView: UIImageView!
-    
+
     var gEmail = "x@y.com"
     var defaultImage = UIImage(named: K.Image.defaultUserImage)
     var imagePicker: ImagePicker!
@@ -25,25 +25,23 @@ class SettingsViewController: UIViewController {
             let uiImage = UIImage(data: data)
             imageView.image = uiImage
         }
-        
+
         self.imagePicker = ImagePicker(presentationController: self, delegate: self)
     }
-        
+
     @IBAction func btnActionPickImage(_ sender: UIButton) {
-    
+
         self.imagePicker.present(from: sender)
     }
-    
-    
+
     @IBAction func btnReset(_ sender: Any) {
-        
+
         imageView.image = defaultImage
         let user = CoreDataFetchOps.shared.getUserby(email: gEmail).first
         user?.imageData = nil
         CoreDataManager.shared.saveContext(context: CoreDataManager.shared.mainContext)
     }
 }
-
 
 extension SettingsViewController: ImagePickerDelegate {
 
@@ -54,10 +52,8 @@ extension SettingsViewController: ImagePickerDelegate {
         let user = CoreDataFetchOps.shared.getUserby(email: gEmail).first
         let pngData = image?.pngData()
         if let data = pngData {
-            print ("Saving user image")
             user?.imageData = data
             CoreDataManager.shared.saveContext(context: CoreDataManager.shared.mainContext)
         }
     }
 }
-

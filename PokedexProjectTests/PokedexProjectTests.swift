@@ -152,12 +152,12 @@ class PokedexProjectTests: XCTestCase {
 //                XCTAssertTrue(evolutionChain.chain.species.name == "charmander")
 
                 var step = evolutionChain.chain.evolves_to
-                
+
                 while step.count > 0 {
                     //print(step[0].species)
                     step = step[0].evolves_to
                 }
-                
+
                 expectation.fulfill()
             }
         } catch {
@@ -192,6 +192,7 @@ class PokedexProjectTests: XCTestCase {
             let parser = SpeciesParser()
             parser.parse(data: data) { (speciesData) in
 
+                print(speciesData.flavor_text_entries[0].language.name)
                 print(speciesData.evolution_chain?.url as Any)
                 expectation.fulfill()
             }

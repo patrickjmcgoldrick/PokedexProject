@@ -88,6 +88,8 @@ identifier_name:
     - evolution_chain
     - base_experience
     - base_stat
+    - flavor_text_entries
+    - flavor_text
 number_separator:
   minimum_length: 5
 file_name:

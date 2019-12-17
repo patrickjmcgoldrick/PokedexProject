@@ -194,9 +194,6 @@
 		5E9E62B4239ADF33001C55BF /* PokedexProject */ = {
 			isa = PBXGroup;
 			children = (
-				5E38E19B23A36D0E002A6F18 /* SettingsViewController.swift */,
-				5E38E11B23A21FA4002A6F18 /* CardView.xib */,
-				5E38E11D23A2246C002A6F18 /* CardView.swift */,
 				5E38E11A23A20F35002A6F18 /* Parsing */,
 				5E7CB2CE239DE966003E082E /* CoreData */,
 				5E9E62B5239ADF33001C55BF /* AppDelegate.swift */,
@@ -207,8 +204,11 @@
 				5E7CB2C8239CCD10003E082E /* ListViewCell.swift */,
 				5EAD0CFB239E90E0005B6EF4 /* FavoritesViewController.swift */,
 				5E9E62E8239ADFE3001C55BF /* DetailViewController.swift */,
+				5E38E19B23A36D0E002A6F18 /* SettingsViewController.swift */,
 				5E9E636C239B0E11001C55BF /* NetworkController.swift */,
 				5E9E632B239AF907001C55BF /* ImageLoader.swift */,
+				5E38E11B23A21FA4002A6F18 /* CardView.xib */,
+				5E38E11D23A2246C002A6F18 /* CardView.swift */,
 				5E9E6378239CBD7A001C55BF /* K.swift */,
 				5E9E62C1239ADF35001C55BF /* Assets.xcassets */,
 				5E9E62C3239ADF35001C55BF /* LaunchScreen.storyboard */,
@@ -392,7 +392,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "#if which swiftlint >/dev/null; then\n#  swiftlint\n#else\n#  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\n#fi\n";
+			shellScript = "if which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 

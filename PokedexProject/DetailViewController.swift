@@ -20,9 +20,7 @@ class DetailViewController: UIViewController, UISearchBarDelegate {
     
     @IBOutlet weak var statBaseExp: StatView!
     
-    
     @IBOutlet weak var statHeight: StatView!
-    
     
     @IBOutlet weak var statWeight: StatView!
     
@@ -57,7 +55,6 @@ class DetailViewController: UIViewController, UISearchBarDelegate {
             if isFavorite(pokemonId: pokemon.id) {
                 imageFavorited.isHighlighted = true
             }
-            print(pokemon.imageURL)
             
             loadDetails()
         }

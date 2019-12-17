@@ -52,7 +52,7 @@ extension SettingsViewController: ImagePickerDelegate {
 
         // save user's image for next login
         let user = CoreDataFetchOps.shared.getUserby(email: gEmail).first
-        var pngData = image?.pngData()
+        let pngData = image?.pngData()
         if let data = pngData {
             print ("Saving user image")
             user?.imageData = data

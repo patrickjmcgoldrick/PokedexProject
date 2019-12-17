@@ -1,4 +1,5 @@
 included:
+  - .
   - Source
 excluded:
   - Tests/SwiftLintFrameworkTests/Resources
@@ -46,7 +47,7 @@ opt_in_rules:
   - override_in_extension
   - pattern_matching_keywords
   - private_action
-  - private_outlet
+#  - private_outlet
 #  - prohibited_interface_builder
   - prohibited_super_call
   - quick_discouraged_call
@@ -59,7 +60,7 @@ opt_in_rules:
   - sorted_first_last
 #  - sorted_imports
   - static_operator
-  - strong_iboutlet
+#  - strong_iboutlet
   - toggle_bool
   - unavailable_function
   - unneeded_parentheses_in_closure_argument
@@ -108,7 +109,7 @@ custom_rules:
   fatal_error:
     name: Fatal Error
     excluded: "Tests/*"
-    message: Prefer using `queuedFatalError` over `fatalError` to avoid leaking compiler host machine paths.
+    message: Prefer using `assertionFatalError` over `fatalError` to avoid leaking compiler host machine paths.
     regex: \bfatalError\b
     match_kinds:
       - identifier

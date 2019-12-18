@@ -18,14 +18,14 @@ class CoreDataManager {
 
     var mainContext: NSManagedObjectContext {
         let viewContext = persistentContainer.viewContext
-        //viewContext.mergePolicy = NSMergeByPropertyStoreTrumpMergePolicy
+        viewContext.mergePolicy = NSMergeByPropertyStoreTrumpMergePolicy
         return viewContext
     }
 
     var backgroundContext: NSManagedObjectContext {
         
         let context = persistentContainer.newBackgroundContext()
-        //context.mergePolicy = NSMergeByPropertyStoreTrumpMergePolicy
+        context.mergePolicy = NSMergeByPropertyStoreTrumpMergePolicy
         return context
     }
 

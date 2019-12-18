@@ -169,7 +169,7 @@
                                             <constraint firstAttribute="height" constant="8" id="jD1-52-jCh"/>
                                         </constraints>
                                     </view>
-                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="itx-V6-w4w">
+                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="itx-V6-w4w">
                                         <rect key="frame" x="8" y="320" width="398" height="375"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Stats:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZpO-0L-VOB">
@@ -221,7 +221,6 @@
                                             <constraint firstItem="W9K-Tr-8fl" firstAttribute="top" secondItem="TIM-sX-Nkt" secondAttribute="bottom" constant="8" id="Sf7-ag-XJ1"/>
                                             <constraint firstItem="ZpO-0L-VOB" firstAttribute="top" secondItem="Y85-J6-Hn2" secondAttribute="top" constant="16" id="Xmz-u1-03f"/>
                                             <constraint firstItem="ZpO-0L-VOB" firstAttribute="centerX" secondItem="itx-V6-w4w" secondAttribute="centerX" id="ePx-TR-TKD"/>
-                                            <constraint firstAttribute="bottomMargin" secondItem="W9K-Tr-8fl" secondAttribute="bottom" constant="259" id="iSP-1q-Lli"/>
                                             <constraint firstItem="Y85-J6-Hn2" firstAttribute="trailing" secondItem="YA2-7X-cKe" secondAttribute="trailing" constant="8" id="j0n-iz-gDe"/>
                                             <constraint firstItem="TIM-sX-Nkt" firstAttribute="top" secondItem="ZpO-0L-VOB" secondAttribute="bottom" constant="17" id="o4R-nt-NaS"/>
                                             <constraint firstItem="uCM-xj-i64" firstAttribute="top" secondItem="YA2-7X-cKe" secondAttribute="bottom" constant="8" id="pvi-6x-usk"/>
@@ -283,6 +282,7 @@
                         <outlet property="imageFavorited" destination="Xsz-lp-y4Z" id="1Uu-Ud-PQP"/>
                         <outlet property="imageMain" destination="Um7-OA-wsw" id="1ax-4t-787"/>
                         <outlet property="lblFavoriteText" destination="bsV-0m-i1S" id="jXZ-xK-lzT"/>
+                        <outlet property="scrollDetails" destination="itx-V6-w4w" id="nCt-Ux-o2m"/>
                         <outlet property="scrollEvolutions" destination="sVg-oh-Qhs" id="fv0-lU-7KU"/>
                         <outlet property="statBaseExp" destination="YA2-7X-cKe" id="r9W-99-y7A"/>
                         <outlet property="statHeight" destination="W9K-Tr-8fl" id="nqc-8A-Tze"/>

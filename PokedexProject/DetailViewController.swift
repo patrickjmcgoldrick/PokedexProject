@@ -16,6 +16,7 @@ class DetailViewController: UIViewController, UISearchBarDelegate {
     
     @IBOutlet weak var lblFavoriteText: UILabel!
     
+    // MARK: Detail Pane Outlets
     @IBOutlet weak var statId: StatView!
     
     @IBOutlet weak var statBaseExp: StatView!
@@ -26,6 +27,9 @@ class DetailViewController: UIViewController, UISearchBarDelegate {
     
     @IBOutlet public weak var detailPane: UIView!
     
+    @IBOutlet weak var scrollDetails: UIScrollView!
+    
+    // MARK: Evolutions Pane Outlets
     @IBOutlet public weak var evolutionPane: UIView!
     
     @IBOutlet weak var scrollEvolutions: UIScrollView!
@@ -34,11 +38,8 @@ class DetailViewController: UIViewController, UISearchBarDelegate {
     var favorites = [Favorite]()
     var evolutionPokemen = [Pokemon]()
     var network = NetworkController()
-    
     var cards = [CardView]()
-    
     var gEmail = "x@y.com"
-
     var cardSize = CGFloat(300.0)
     
     override func viewDidLoad() {
@@ -70,12 +71,8 @@ class DetailViewController: UIViewController, UISearchBarDelegate {
     }
     
     private func setupScrollView() {
-        //scrollEvolutions.frame = CGRect(x: 0, y: 0, width: scrollEvolutions.frame.width, height: scrollEvolutions.frame.height)
+        
         scrollEvolutions.contentSize = CGSize(width: cardSize * CGFloat(cards.count), height: scrollEvolutions.frame.height)
-        //scrollEvolutions.isPagingEnabled = true
-
-        // calculate x position to center image
-        //let xPosition = (view.frame.width - scrollView.frame.width) / 2
 
         for index in 0..<cards.count {
             cards[index].frame = CGRect(x: cardSize * CGFloat(index),
@@ -139,7 +136,35 @@ class DetailViewController: UIViewController, UISearchBarDelegate {
             self.statWeight.lblValue.text = String(pokemonData.weight)
             self.statHeight.lblName.text = "Height:"
             self.statHeight.lblValue.text = String(pokemonData.height)
+            
+            var lastView: UIView = self.statHeight
+            
+            for statData in pokemonData.stats {
+                lastView = self.generateStatView(statData: statData, lastView: lastView)
+            }
         }
+    }
+    
+    func generateStatView(statData: StatData, lastView: UIView) -> UIView {
+        let value = statData.base_stat
+        print("Value: \(value)")
+        let name = statData.stat.name
+        var statsView: StatView = {
+            var statView = StatView()
+        
+            statView.translatesAutoresizingMaskIntoConstraints = false
+            statView.lblName.text = name
+            statView.lblValue.text = String(value)
+            return statView
+        }()
+        scrollDetails.addSubview(statsView)
+        statsView.topAnchor.constraint(equalTo: lastView.bottomAnchor, constant: 8).isActive = true
+        statsView.leadingAnchor.constraint(equalTo: scrollDetails.leadingAnchor, constant: 20).isActive = true
+        statsView.heightAnchor.constraint(equalToConstant: 34).isActive = true
+        statsView.widthAnchor.constraint(equalToConstant: 171).isActive = true
+        
+        return statsView
+
     }
     
     // MARK: Break Down Species Service Data

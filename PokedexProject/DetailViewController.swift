@@ -174,7 +174,7 @@ class DetailViewController: UIViewController, UISearchBarDelegate {
     
     func updateStatView(statData: StatData, statView: StatView) {
         statView.lblValue.text = String(statData.base_stat)
-        statView.lblName.text = statData.stat.name
+        statView.lblName.text = statData.stat.name + ":"
     }
     
     // MARK: Break Down Species Service Data

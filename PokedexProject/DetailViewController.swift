@@ -25,6 +25,19 @@ class DetailViewController: UIViewController, UISearchBarDelegate {
     
     @IBOutlet weak var statWeight: StatView!
     
+    
+    @IBOutlet weak var statSpeed: StatView!
+    
+    @IBOutlet weak var statSpecialDefense: StatView!
+    
+    @IBOutlet weak var statSpecialAttack: StatView!
+    
+    @IBOutlet weak var statDefense: StatView!
+    
+    @IBOutlet weak var statAttack: StatView!
+    
+    @IBOutlet weak var statHp: StatView!
+    
     @IBOutlet public weak var detailPane: UIView!
     
     @IBOutlet weak var scrollDetails: UIScrollView!
@@ -139,32 +152,23 @@ class DetailViewController: UIViewController, UISearchBarDelegate {
             
             var lastView: UIView = self.statHeight
             
-            for statData in pokemonData.stats {
-                lastView = self.generateStatView(statData: statData, lastView: lastView)
+            var statArray = [StatView]()
+            statArray.append(self.statSpeed)
+            statArray.append(self.statSpecialDefense)
+            statArray.append(self.statSpecialAttack)
+            statArray.append(self.statDefense)
+            statArray.append(self.statAttack)
+            statArray.append(self.statHp)
+            
+            for (index, statData) in pokemonData.stats.enumerated() {
+                self.updateStatView(statData: statData, statView: statArray[index])
             }
         }
     }
     
-    func generateStatView(statData: StatData, lastView: UIView) -> UIView {
-        let value = statData.base_stat
-        print("Value: \(value)")
-        let name = statData.stat.name
-        var statsView: StatView = {
-            var statView = StatView()
-        
-            statView.translatesAutoresizingMaskIntoConstraints = false
-            statView.lblName.text = name
-            statView.lblValue.text = String(value)
-            return statView
-        }()
-        scrollDetails.addSubview(statsView)
-        statsView.topAnchor.constraint(equalTo: lastView.bottomAnchor, constant: 8).isActive = true
-        statsView.leadingAnchor.constraint(equalTo: scrollDetails.leadingAnchor, constant: 20).isActive = true
-        statsView.heightAnchor.constraint(equalToConstant: 34).isActive = true
-        statsView.widthAnchor.constraint(equalToConstant: 171).isActive = true
-        
-        return statsView
-
+    func updateStatView(statData: StatData, statView: StatView) {
+        statView.lblValue.text = String(statData.base_stat)
+        statView.lblName.text = statData.stat.name
     }
     
     // MARK: Break Down Species Service Data

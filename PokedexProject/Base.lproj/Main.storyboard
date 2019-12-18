@@ -144,42 +144,42 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jAC-jB-EBl">
                                 <rect key="frame" x="0.0" y="56" width="414" height="703"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="defaultPokemon" translatesAutoresizingMaskIntoConstraints="NO" id="Um7-OA-wsw">
-                                        <rect key="frame" x="8" y="80" width="192" height="192"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="192" id="e5n-AX-sXa"/>
-                                            <constraint firstAttribute="width" secondItem="Um7-OA-wsw" secondAttribute="height" multiplier="1:1" id="eu9-8l-zXn"/>
-                                        </constraints>
-                                    </imageView>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="heart" catalog="system" highlightedImage="heart.fill" translatesAutoresizingMaskIntoConstraints="NO" id="Xsz-lp-y4Z">
                                         <rect key="frame" x="385.5" y="9.5" width="20.5" height="17.5"/>
                                         <color key="tintColor" systemColor="systemPinkColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bsV-0m-i1S">
-                                        <rect key="frame" x="200" y="80" width="206" height="122"/>
-                                        <string key="text">Bulbasaur can be seen napping in bright sunlight.\nThere is a seed on its back. By soaking up the sun’s rays,\nthe seed grows progressively larger.</string>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RWW-k5-CBW">
-                                        <rect key="frame" x="8" y="304" width="398" height="8"/>
-                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="8" id="jD1-52-jCh"/>
-                                        </constraints>
-                                    </view>
                                     <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="itx-V6-w4w">
-                                        <rect key="frame" x="8" y="320" width="398" height="375"/>
+                                        <rect key="frame" x="8" y="63" width="398" height="632"/>
                                         <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="defaultPokemon" translatesAutoresizingMaskIntoConstraints="NO" id="Um7-OA-wsw">
+                                                <rect key="frame" x="8" y="8" width="192" height="192"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="192" id="e5n-AX-sXa"/>
+                                                    <constraint firstAttribute="width" secondItem="Um7-OA-wsw" secondAttribute="height" multiplier="1:1" id="eu9-8l-zXn"/>
+                                                </constraints>
+                                            </imageView>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RWW-k5-CBW">
+                                                <rect key="frame" x="0.0" y="224" width="398" height="8"/>
+                                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="8" id="jD1-52-jCh"/>
+                                                </constraints>
+                                            </view>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bsV-0m-i1S">
+                                                <rect key="frame" x="208" y="8" width="182" height="142.5"/>
+                                                <string key="text">Bulbasaur can be seen napping in bright sunlight.\nThere is a seed on its back. By soaking up the sun’s rays,\nthe seed grows progressively larger.</string>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Stats:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZpO-0L-VOB">
-                                                <rect key="frame" x="173" y="16" width="52.5" height="23"/>
+                                                <rect key="frame" x="173" y="248" width="52.5" height="23"/>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="19"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TIM-sX-Nkt" customClass="StatView" customModule="PokedexProject" customModuleProvider="target">
-                                                <rect key="frame" x="8" y="56" width="171" height="34"/>
+                                                <rect key="frame" x="8" y="288" width="171" height="34"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="34" id="1bn-ki-b5M"/>
@@ -187,7 +187,7 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YA2-7X-cKe" customClass="StatView" customModule="PokedexProject" customModuleProvider="target">
-                                                <rect key="frame" x="219" y="56" width="171" height="34"/>
+                                                <rect key="frame" x="219" y="288" width="171" height="34"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="171" id="BTj-j7-S3x"/>
@@ -195,7 +195,7 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W9K-Tr-8fl" customClass="StatView" customModule="PokedexProject" customModuleProvider="target">
-                                                <rect key="frame" x="8" y="98" width="171" height="34"/>
+                                                <rect key="frame" x="8" y="330" width="171" height="34"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="171" id="Ibs-N6-Bqo"/>
@@ -203,29 +203,98 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uCM-xj-i64" customClass="StatView" customModule="PokedexProject" customModuleProvider="target">
-                                                <rect key="frame" x="219" y="98" width="171" height="34"/>
+                                                <rect key="frame" x="219" y="330" width="171" height="34"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="34" id="9ke-gb-WXi"/>
                                                     <constraint firstAttribute="width" constant="171" id="sFB-yA-tTi"/>
                                                 </constraints>
                                             </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N5E-7Q-ZPE" customClass="StatView" customModule="PokedexProject" customModuleProvider="target">
+                                                <rect key="frame" x="8" y="406" width="171" height="34"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="171" id="8fS-pf-L87"/>
+                                                    <constraint firstAttribute="height" constant="34" id="QPs-Wp-Ytr"/>
+                                                </constraints>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wEZ-SS-tVu" customClass="StatView" customModule="PokedexProject" customModuleProvider="target">
+                                                <rect key="frame" x="219" y="406" width="171" height="34"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="34" id="GmE-RZ-POs"/>
+                                                    <constraint firstAttribute="width" constant="171" id="gx0-ju-cQF"/>
+                                                </constraints>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jAm-FT-wEp" customClass="StatView" customModule="PokedexProject" customModuleProvider="target">
+                                                <rect key="frame" x="8" y="448" width="171" height="34"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="34" id="2XZ-a9-KxG"/>
+                                                    <constraint firstAttribute="width" constant="171" id="QR9-dm-ruF"/>
+                                                </constraints>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UFG-b0-pGq" customClass="StatView" customModule="PokedexProject" customModuleProvider="target">
+                                                <rect key="frame" x="219" y="448" width="171" height="34"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="171" id="84m-o5-0gh"/>
+                                                    <constraint firstAttribute="height" constant="34" id="vHt-V7-lxu"/>
+                                                </constraints>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hlp-Zo-3bu" customClass="StatView" customModule="PokedexProject" customModuleProvider="target">
+                                                <rect key="frame" x="8" y="490" width="171" height="34"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="34" id="Cje-us-fcw"/>
+                                                    <constraint firstAttribute="width" constant="171" id="Vad-Wz-Kod"/>
+                                                </constraints>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sRs-2o-bWH" customClass="StatView" customModule="PokedexProject" customModuleProvider="target">
+                                                <rect key="frame" x="219" y="490" width="171" height="34"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="34" id="9CM-c9-F3M"/>
+                                                    <constraint firstAttribute="width" constant="171" id="rJu-vP-M3h"/>
+                                                </constraints>
+                                            </view>
                                         </subviews>
                                         <constraints>
                                             <constraint firstItem="W9K-Tr-8fl" firstAttribute="centerY" secondItem="uCM-xj-i64" secondAttribute="centerY" id="1eg-jP-AnI"/>
+                                            <constraint firstItem="jAm-FT-wEp" firstAttribute="centerY" secondItem="UFG-b0-pGq" secondAttribute="centerY" id="1kc-I8-2AP"/>
+                                            <constraint firstItem="Hlp-Zo-3bu" firstAttribute="leading" secondItem="Y85-J6-Hn2" secondAttribute="leading" constant="8" id="2XL-Xc-WD8"/>
                                             <constraint firstItem="YA2-7X-cKe" firstAttribute="trailing" secondItem="itx-V6-w4w" secondAttribute="trailingMargin" id="5x4-G3-zyy"/>
                                             <constraint firstItem="TIM-sX-Nkt" firstAttribute="leading" secondItem="itx-V6-w4w" secondAttribute="leadingMargin" id="6bA-FS-Ffc"/>
+                                            <constraint firstItem="Y85-J6-Hn2" firstAttribute="bottom" secondItem="Hlp-Zo-3bu" secondAttribute="bottom" constant="107" id="85j-li-Los"/>
+                                            <constraint firstItem="jAm-FT-wEp" firstAttribute="top" secondItem="N5E-7Q-ZPE" secondAttribute="bottom" constant="8" id="955-hT-Av7"/>
+                                            <constraint firstItem="N5E-7Q-ZPE" firstAttribute="leading" secondItem="Y85-J6-Hn2" secondAttribute="leading" constant="8" id="9Kd-29-6EF"/>
                                             <constraint firstItem="YA2-7X-cKe" firstAttribute="top" secondItem="ZpO-0L-VOB" secondAttribute="bottom" constant="17" id="Hv9-MD-RJQ"/>
                                             <constraint firstItem="I56-PG-Q3N" firstAttribute="trailing" secondItem="uCM-xj-i64" secondAttribute="trailing" constant="8" id="I0Z-jk-7u7"/>
+                                            <constraint firstItem="N5E-7Q-ZPE" firstAttribute="centerY" secondItem="wEZ-SS-tVu" secondAttribute="centerY" id="QqN-9d-IMD"/>
                                             <constraint firstItem="TIM-sX-Nkt" firstAttribute="centerY" secondItem="YA2-7X-cKe" secondAttribute="centerY" id="ReZ-Er-XFv"/>
+                                            <constraint firstItem="RWW-k5-CBW" firstAttribute="leading" secondItem="Y85-J6-Hn2" secondAttribute="leading" id="SF9-9N-maD"/>
                                             <constraint firstItem="W9K-Tr-8fl" firstAttribute="top" secondItem="TIM-sX-Nkt" secondAttribute="bottom" constant="8" id="Sf7-ag-XJ1"/>
-                                            <constraint firstItem="ZpO-0L-VOB" firstAttribute="top" secondItem="Y85-J6-Hn2" secondAttribute="top" constant="16" id="Xmz-u1-03f"/>
+                                            <constraint firstItem="Um7-OA-wsw" firstAttribute="top" secondItem="I56-PG-Q3N" secondAttribute="top" constant="8" id="Ub7-fO-NMv"/>
+                                            <constraint firstItem="Y85-J6-Hn2" firstAttribute="trailing" secondItem="sRs-2o-bWH" secondAttribute="trailing" constant="8" id="Wf6-xf-iJG"/>
+                                            <constraint firstItem="Um7-OA-wsw" firstAttribute="leading" secondItem="itx-V6-w4w" secondAttribute="leading" constant="8" id="XE0-6a-ppy"/>
+                                            <constraint firstItem="RWW-k5-CBW" firstAttribute="trailing" secondItem="Y85-J6-Hn2" secondAttribute="trailing" id="ZWf-i0-0fW"/>
+                                            <constraint firstItem="RWW-k5-CBW" firstAttribute="top" secondItem="Um7-OA-wsw" secondAttribute="bottom" constant="24" id="ZbT-5k-T33"/>
+                                            <constraint firstItem="bsV-0m-i1S" firstAttribute="top" secondItem="I56-PG-Q3N" secondAttribute="top" constant="8" id="a44-P5-WQF"/>
+                                            <constraint firstAttribute="trailing" secondItem="bsV-0m-i1S" secondAttribute="trailing" constant="8" id="cM7-rx-655"/>
                                             <constraint firstItem="ZpO-0L-VOB" firstAttribute="centerX" secondItem="itx-V6-w4w" secondAttribute="centerX" id="ePx-TR-TKD"/>
+                                            <constraint firstItem="Y85-J6-Hn2" firstAttribute="trailing" secondItem="wEZ-SS-tVu" secondAttribute="trailing" constant="8" id="eyp-hy-LNG"/>
                                             <constraint firstItem="Y85-J6-Hn2" firstAttribute="trailing" secondItem="YA2-7X-cKe" secondAttribute="trailing" constant="8" id="j0n-iz-gDe"/>
                                             <constraint firstItem="TIM-sX-Nkt" firstAttribute="top" secondItem="ZpO-0L-VOB" secondAttribute="bottom" constant="17" id="o4R-nt-NaS"/>
+                                            <constraint firstItem="Hlp-Zo-3bu" firstAttribute="centerY" secondItem="sRs-2o-bWH" secondAttribute="centerY" id="oEh-bW-u9X"/>
+                                            <constraint firstItem="N5E-7Q-ZPE" firstAttribute="top" secondItem="W9K-Tr-8fl" secondAttribute="bottom" constant="42" id="oZc-0B-wia"/>
+                                            <constraint firstItem="bsV-0m-i1S" firstAttribute="leading" secondItem="Um7-OA-wsw" secondAttribute="trailing" constant="8" id="p4t-2Q-agN"/>
                                             <constraint firstItem="uCM-xj-i64" firstAttribute="top" secondItem="YA2-7X-cKe" secondAttribute="bottom" constant="8" id="pvi-6x-usk"/>
                                             <constraint firstItem="uCM-xj-i64" firstAttribute="trailing" secondItem="itx-V6-w4w" secondAttribute="trailingMargin" id="u3J-2T-vov"/>
                                             <constraint firstItem="W9K-Tr-8fl" firstAttribute="leading" secondItem="itx-V6-w4w" secondAttribute="leadingMargin" id="uBi-5L-YPj"/>
+                                            <constraint firstItem="Hlp-Zo-3bu" firstAttribute="top" secondItem="jAm-FT-wEp" secondAttribute="bottom" constant="8" id="vw4-w3-dN8"/>
+                                            <constraint firstItem="jAm-FT-wEp" firstAttribute="leading" secondItem="Y85-J6-Hn2" secondAttribute="leading" constant="8" id="wUe-vv-mDE"/>
+                                            <constraint firstItem="ZpO-0L-VOB" firstAttribute="top" secondItem="RWW-k5-CBW" secondAttribute="bottom" constant="16" id="xbk-NI-yzQ"/>
+                                            <constraint firstItem="Y85-J6-Hn2" firstAttribute="trailing" secondItem="UFG-b0-pGq" secondAttribute="trailing" constant="8" id="zwk-GQ-yQx"/>
                                         </constraints>
                                         <viewLayoutGuide key="contentLayoutGuide" id="I56-PG-Q3N"/>
                                         <viewLayoutGuide key="frameLayoutGuide" id="Y85-J6-Hn2"/>
@@ -233,20 +302,12 @@
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstItem="Um7-OA-wsw" firstAttribute="leading" secondItem="jAC-jB-EBl" secondAttribute="leadingMargin" id="BSr-An-2wK"/>
-                                    <constraint firstItem="RWW-k5-CBW" firstAttribute="leading" secondItem="jAC-jB-EBl" secondAttribute="leadingMargin" id="EpO-fN-fMV"/>
+                                    <constraint firstItem="itx-V6-w4w" firstAttribute="top" secondItem="Xsz-lp-y4Z" secondAttribute="bottom" constant="36" id="1wC-Ji-v35"/>
                                     <constraint firstItem="Xsz-lp-y4Z" firstAttribute="top" secondItem="jAC-jB-EBl" secondAttribute="topMargin" id="Ftr-dn-FSb"/>
                                     <constraint firstAttribute="trailingMargin" secondItem="itx-V6-w4w" secondAttribute="trailing" id="K0r-0S-n50"/>
                                     <constraint firstItem="Xsz-lp-y4Z" firstAttribute="trailing" secondItem="jAC-jB-EBl" secondAttribute="trailingMargin" id="Y8b-uR-XoK"/>
-                                    <constraint firstItem="bsV-0m-i1S" firstAttribute="leading" secondItem="Um7-OA-wsw" secondAttribute="trailing" id="c72-MD-vss"/>
-                                    <constraint firstItem="RWW-k5-CBW" firstAttribute="top" secondItem="Um7-OA-wsw" secondAttribute="bottom" constant="32" id="cmT-tX-qaw"/>
-                                    <constraint firstItem="bsV-0m-i1S" firstAttribute="top" secondItem="Um7-OA-wsw" secondAttribute="top" id="dP6-ef-j1N"/>
-                                    <constraint firstItem="Um7-OA-wsw" firstAttribute="top" secondItem="jAC-jB-EBl" secondAttribute="top" constant="80" id="dZn-5o-fhs"/>
-                                    <constraint firstAttribute="trailingMargin" secondItem="bsV-0m-i1S" secondAttribute="trailing" id="gVn-im-vu0"/>
                                     <constraint firstItem="itx-V6-w4w" firstAttribute="leading" secondItem="jAC-jB-EBl" secondAttribute="leadingMargin" id="hr6-Lc-8Yc"/>
                                     <constraint firstAttribute="bottomMargin" secondItem="itx-V6-w4w" secondAttribute="bottom" id="jUh-Im-bn6"/>
-                                    <constraint firstItem="itx-V6-w4w" firstAttribute="top" secondItem="RWW-k5-CBW" secondAttribute="bottom" constant="8" symbolic="YES" id="oTp-6F-BlU"/>
-                                    <constraint firstAttribute="trailingMargin" secondItem="RWW-k5-CBW" secondAttribute="trailing" id="taT-eP-zKs"/>
                                 </constraints>
                             </view>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="CpD-s1-arK">
@@ -284,9 +345,15 @@
                         <outlet property="lblFavoriteText" destination="bsV-0m-i1S" id="jXZ-xK-lzT"/>
                         <outlet property="scrollDetails" destination="itx-V6-w4w" id="nCt-Ux-o2m"/>
                         <outlet property="scrollEvolutions" destination="sVg-oh-Qhs" id="fv0-lU-7KU"/>
+                        <outlet property="statAttack" destination="Hlp-Zo-3bu" id="joF-nk-K2L"/>
                         <outlet property="statBaseExp" destination="YA2-7X-cKe" id="r9W-99-y7A"/>
+                        <outlet property="statDefense" destination="UFG-b0-pGq" id="8Md-Ym-Dap"/>
                         <outlet property="statHeight" destination="W9K-Tr-8fl" id="nqc-8A-Tze"/>
+                        <outlet property="statHp" destination="sRs-2o-bWH" id="WeT-2c-bwd"/>
                         <outlet property="statId" destination="TIM-sX-Nkt" id="aEJ-hb-pcS"/>
+                        <outlet property="statSpecialAttack" destination="jAm-FT-wEp" id="jZe-qV-zZY"/>
+                        <outlet property="statSpecialDefense" destination="wEZ-SS-tVu" id="K0V-GP-M8N"/>
+                        <outlet property="statSpeed" destination="N5E-7Q-ZPE" id="yPW-v8-ArZ"/>
                         <outlet property="statWeight" destination="uCM-xj-i64" id="XbR-8a-0IE"/>
                     </connections>
                 </viewController>
@@ -561,6 +628,6 @@
         <image name="surf-board" width="256" height="256"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="1rK-ZU-iEG"/>
+        <segue reference="e8a-FY-4Pv"/>
     </inferredMetricsTieBreakers>
 </document>

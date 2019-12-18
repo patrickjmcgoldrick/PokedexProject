@@ -14,7 +14,7 @@ class ImageLoader {
     
     // Given a Pokemon id, load the PokemonForm, then get
     // the 'front_default' image into the given ImageView
-    func loadPokemonImage(id: Int, imageLoaded: @escaping (String, Data) -> Void) {
+    func loadPokemonImage(id: Int16, imageLoaded: @escaping (String, Data) -> Void) {
         
         let url = "\(K.ServiceURL.getPokemonForm)\(id)"
         

@@ -12,7 +12,6 @@ class SettingsViewController: UIViewController {
 
     @IBOutlet weak var imageView: UIImageView!
 
-    var gEmail = "x@y.com"
     var defaultImage = UIImage(named: K.Image.defaultUserImage)
     var imagePicker: ImagePicker!
 
@@ -20,7 +19,7 @@ class SettingsViewController: UIViewController {
         super.viewDidLoad()
 
         // read user's image and load it
-        let user = CoreDataFetchOps.shared.getUserby(email: gEmail).first
+        let user = CoreDataFetchOps.shared.getUserby(email: User.loggedInUserEmail).first
         if let data = user?.imageData {
             let uiImage = UIImage(data: data)
             imageView.image = uiImage
@@ -37,7 +36,7 @@ class SettingsViewController: UIViewController {
     @IBAction func btnReset(_ sender: Any) {
 
         imageView.image = defaultImage
-        let user = CoreDataFetchOps.shared.getUserby(email: gEmail).first
+        let user = CoreDataFetchOps.shared.getUserby(email: User.loggedInUserEmail).first
         user?.imageData = nil
         CoreDataManager.shared.saveContext(context: CoreDataManager.shared.mainContext)
     }
@@ -49,7 +48,7 @@ extension SettingsViewController: ImagePickerDelegate {
         self.imageView.image = image
 
         // save user's image for next login
-        let user = CoreDataFetchOps.shared.getUserby(email: gEmail).first
+        let user = CoreDataFetchOps.shared.getUserby(email: User.loggedInUserEmail).first
         let pngData = image?.pngData()
         if let data = pngData {
             user?.imageData = data

@@ -52,7 +52,6 @@ class DetailViewController: UIViewController, UISearchBarDelegate {
     var evolutionPokemen = [Pokemon]()
     var network = NetworkController()
     var cards = [CardView]()
-    var gEmail = "x@y.com"
     var cardSize = CGFloat(300.0)
     
     override func viewDidLoad() {
@@ -60,11 +59,18 @@ class DetailViewController: UIViewController, UISearchBarDelegate {
                 
         setupScrollView()
         
-        favorites = CoreDataFetchOps.shared.getFavoritesBy(email: gEmail)
+        favorites = CoreDataFetchOps.shared.getFavoritesBy(email: User.loggedInUserEmail)
 
+        print("POKEMON: \(pokemon?.id)")
+        
         if let pokemon = pokemon {
-            if let data = pokemon.imageData {
-                imageMain.image = UIImage(data: data)
+            if let imageUrl = pokemon.imageURL {
+                ImageLoader().loadImageIntoView(imageURL: imageUrl, imageView: imageMain)
+            } else {
+                ImageLoader().loadPokemonImage(id: pokemon.id) { (imageURL, data) in
+                    self.imageMain.image = UIImage(data: data)
+                    pokemon.imageURL = imageURL
+                }
             }
             if isFavorite(pokemonId: pokemon.id) {
                 imageFavorited.isHighlighted = true

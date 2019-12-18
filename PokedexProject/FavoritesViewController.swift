@@ -14,9 +14,7 @@ class FavoritesViewController: UIViewController {
     
     var pokemonIds: [Int16]?
     var pokemen = [Pokemon]()
-    
-    let gEmail = "x@y.com"
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -35,7 +33,7 @@ class FavoritesViewController: UIViewController {
     func setupFavoriteData() {
 
         // get array of PokemonIds
-        let favorites = CoreDataFetchOps.shared.getFavoritesBy(email: gEmail)
+        let favorites = CoreDataFetchOps.shared.getFavoritesBy(email: User.loggedInUserEmail)
         pokemonIds = favorites.map { (favorite) -> Int16 in
             return favorite.pokemonId
         }

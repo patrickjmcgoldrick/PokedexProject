@@ -19,7 +19,6 @@ class ListViewController: UIViewController, UIGestureRecognizerDelegate {
     var allLoadedSoFar = [Pokemon]()
     var pokemen = [Pokemon]()
     var favorites = [Favorite]()
-    var gEmail = "x@y.com"
     var defaultImage = UIImage(named: K.Image.defaultPokemonImage)
     
     override func viewDidLoad() {
@@ -43,7 +42,7 @@ class ListViewController: UIViewController, UIGestureRecognizerDelegate {
         longPressGuestureRec.delegate = self
        //TODO: Use global variable
         
-        favorites = CoreDataFetchOps.shared.getFavoritesBy(email: gEmail)
+        favorites = CoreDataFetchOps.shared.getFavoritesBy(email: User.loggedInUserEmail)
     }
     
     private func loadPokemon(urlString: String) {
@@ -95,13 +94,13 @@ class ListViewController: UIViewController, UIGestureRecognizerDelegate {
             
             // flip favorite status
             if isFavorite(pokemonId: pokemon.id) {
-                CoreDataDeleteOps.shared.deleteFavoriteBy(email: gEmail, pokemonId: pokemon.id)
+                CoreDataDeleteOps.shared.deleteFavoriteBy(email: User.loggedInUserEmail, pokemonId: pokemon.id)
                 cell.ivFavorite.isHidden = true
             } else {
-                CoreDataSaveOps.shared.saveFavorite(email: gEmail, pokemonId: pokemon.id)
+                CoreDataSaveOps.shared.saveFavorite(email: User.loggedInUserEmail, pokemonId: pokemon.id)
                 cell.ivFavorite.isHidden = false
             }
-            favorites = CoreDataFetchOps.shared.getFavoritesBy(email: gEmail)
+            favorites = CoreDataFetchOps.shared.getFavoritesBy(email: User.loggedInUserEmail)
         } else {
             print("couldn't find index path")
         }
@@ -138,30 +137,26 @@ extension ListViewController: UICollectionViewDataSource {
         let pokemon = pokemen[indexPath.row]
         cell.lblName.text = pokemon.name
         cell.ivFavorite.isHidden = !isFavorite(pokemonId: pokemon.id)
+        
+        cell.imageView.image = defaultImage
         // do we have the image already?
-        if let imageData = pokemon.imageData {
-            cell.imageView.image = UIImage(data: imageData)
+        if let imageUrl = pokemon.imageURL {
+            ImageLoader().loadImageIntoView(imageURL: imageUrl, imageView: cell.imageView)
         } else {
             // otherwise, load image and save for next time
             cell.imageView.image = defaultImage
             if pokemon.id != 0 {
-                updatePokemon(id: Int(pokemon.id), imageView: cell.imageView)
+                updatePokemon(id: pokemon.id, imageView: cell.imageView)
             }
-                /*
-            else {
-                updatePokemon(id: (indexPath.row + 1), imageView: cell.imageView)
-            }
- */
         }
         return cell
     }
     
-    private func updatePokemon(id: Int, imageView: UIImageView) {
+    private func updatePokemon(id: Int16, imageView: UIImageView) {
         ImageLoader().loadPokemonImage(id: id) { (imageURL, data) in
             let pokemon = CoreDataFetchOps.shared.getPokemonById(id: Int16(id))
             if let pokemon = pokemon {
                 pokemon.imageURL = imageURL
-                pokemon.imageData = data
                 CoreDataSaveOps.shared.savePokemon(pokemon: pokemon)
             }
             DispatchQueue.main.async {
